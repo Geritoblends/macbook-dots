@@ -1,0 +1,314 @@
+/* Gruvbox color palette */
+@define-color bg_h         #1d2021; /* Hard contrast background */
+@define-color bg           #282828; /* Normal background */
+@define-color bg_s         #32302f; /* Soft contrast background */
+@define-color bg0_h        #1d2021; /* Hard contrast background */
+@define-color bg0          #282828; /* Normal background */
+@define-color bg0_s        #32302f; /* Soft contrast background */
+@define-color bg1          #3c3836; /* Darker background */
+@define-color bg2          #504945; /* Darkish background */
+@define-color bg3          #665c54; /* Dark background highlight */
+@define-color bg4          #7c6f64; /* Dark background highlight */
+@define-color fg           #ebdbb2; /* Default foreground */
+@define-color fg0          #fbf1c7; /* Light foreground */
+@define-color fg1          #ebdbb2; /* Default foreground */
+@define-color fg2          #d5c4a1; /* Darkish foreground */
+@define-color fg3          #bdae93; /* Dark foreground */
+@define-color fg4          #a89984; /* Darker foreground */
+@define-color red          #cc241d; /* Red */
+@define-color green        #98971a; /* Green */
+@define-color yellow       #d79921; /* Yellow */
+@define-color blue         #458588; /* Blue */
+@define-color purple       #b16286; /* Purple */
+@define-color aqua         #689d6a; /* Aqua */
+@define-color orange       #d65d0e; /* Orange */
+@define-color gray         #928374; /* Gray */
+@define-color red_bright   #fb4934; /* Bright Red */
+@define-color green_bright #b8bb26; /* Bright Green */
+@define-color yellow_bright #fabd2f; /* Bright Yellow */
+@define-color blue_bright  #83a598; /* Bright Blue */
+@define-color purple_bright #d3869b; /* Bright Purple */
+@define-color aqua_bright  #8ec07c; /* Bright Aqua */
+@define-color orange_bright #fe8019; /* Bright Orange */
+@define-color gray_bright  #a89984; /* Bright Gray */
+
+* {
+    font-size: 14px;
+    font-family: "Inter", "Nerd Font";
+}
+
+window#waybar {
+    all: unset;
+    background-color: alpha(@bg, 0.6);
+    /* border-bottom: solid 4px alpha(@green_bright, 1); */
+    transition: all .3s ease;
+}
+
+.modules-left {
+    margin: 0px 0px 0px 25px;
+    border-radius: 10px;
+}
+
+.modules-center {
+    padding: 7px;
+    margin: 0px 0px 5px 0px;
+    background-color: alpha(@bg, 0.5);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.modules-right {
+    margin: 0px 17px 0px 0px;
+    border: none;
+    box-shadow: none;
+}
+
+tooltip {
+    background: alpha(@bg1, 0.9);
+    color: @fg;
+    border: solid 2px alpha(@fg4, 0.6);
+}
+
+#clock:hover, 
+#custom-pacman:hover, 
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover, 
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-finder:hover,
+#custom-spotlight:hover {
+    transition: all .1s ease;
+    color: @yellow_bright;
+}
+
+#custom-notification {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#clock {
+    padding: 0px 5px;
+    color: @fg;
+    transition: all .3s ease;
+}
+
+#custom-pacman {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#workspaces {
+    padding: 0px 5px;
+}
+
+#workspaces button {
+    all: unset;
+    padding: 0px 5px;
+    color: @fg;
+    transition: all .2s ease;
+    border-radius: 5px;
+}
+
+#workspaces button:hover {
+    color: @fg0;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @bg;
+    text-shadow: 0px 0px 1.5px alpha(@fg, 0.5);
+    background-color: @fg2;
+}
+
+#workspaces button.empty {
+    color: alpha(@fg4, 0.5);
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(@bg3, 0.2);
+}
+
+#workspaces button.empty:hover {
+    color: alpha(@fg4, 0.7);
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(@fg, 0.5);
+    transition: all 0.3s ease;
+}
+
+#workspaces button.empty.active {
+    color: @bg0;
+    border: none;
+}
+
+#bluetooth {
+    padding: 0px 10px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    margin: 0px 0px 5px 0px;
+    background-color: alpha(@bg, 0.5);
+}
+
+#network {
+    padding: 0px 15px 0px 10px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 0px 5px 0px;
+}
+
+#battery {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#battery.charging {
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @orange;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging.full {
+    color: @orange_bright;
+}
+
+#group-expand {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#custom-expand {
+    padding: 0px 5px;
+    color: alpha(@fg3, 0.5);
+    text-shadow: 0px 0px 2px alpha(@bg0, 0.7);
+    transition: all .3s ease;
+}
+
+#custom-expand:hover {
+    color: alpha(@fg, 0.7);
+    text-shadow: 0px 0px 2px alpha(@fg, 0.5);
+}
+
+#custom-colorpicker {
+    padding: 0px 5px;
+}
+
+#cpu {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 0px 5px 0px;
+}
+
+#memory {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 0px 5px 0px;
+}
+
+#custom-finder {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 0px 5px 10px;
+    border-radius: 0px 0px 0px 10px;
+}
+
+#custom-spotlight {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 10px 5px 0px;
+    border-radius: 0px 0px 10px 0px;
+}
+
+#custom-quick_settings {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+    background-color: alpha(@bg, 0.5);
+    margin: 0px 0px 5px 0px;
+}
+
+#custom-apple {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#temperature {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @orange_bright;
+}
+
+#custom-endpoint {
+    color: transparent;
+    text-shadow: 0px 0px 1.5px alpha(@bg0, 1);
+}
+
+#custom-treebg {
+    color: @green_bright;
+}
+
+#custom-flowerbg {
+    color: @red;
+}
+
+#custom-mountainbg {
+    color: @yellow_bright;
+}
+
+#custom-mountainbg, #custom-flowerbg, #custom-treebg {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#custom-mountainbg:hover, #custom-flowerbg:hover, #custom-treebg:hover {
+    color: @fg;
+}
+
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu {
+    background-color: alpha(@bg, 0.9);
+}
+
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+@keyframes blink {
+    to {
+        color: @fg;
+    }
+}
+

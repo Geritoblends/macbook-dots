@@ -1,0 +1,22 @@
+
+#!/bin/bash
+
+# Check if input is provided
+if [ -z "$1" ]; then
+    echo "Usage: mfetch \"Song Name - Artist\""
+    exit 1
+fi
+
+query="$1"
+filename="${query}.mp3"
+music_dir="$HOME/Music"
+
+# Search and download the first YouTube result
+yt-dlp "ytsearch1:${query}" \
+    --extract-audio \
+    --audio-format mp3 \
+    --output "${music_dir}/${filename}" \
+    --no-playlist
+
+echo "Downloaded to: ${music_dir}/${filename}"
+notify-send "Song downloaded" "'${filename}' has been downloaded succesfully."

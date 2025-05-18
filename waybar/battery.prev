@@ -1,0 +1,12 @@
+
+"format": " <span rise='-2000'><small>{capacity}%</small> <span rise='-3000'><big>{icon} </big></span></span>",
+            "format-charging": " <span rise='-2000'><span foreground='white'><small>{capacity}%</small> </span><span rise='-3000'><big>{icon} </big></span></span>",
+            "format-plugged": " <span rise='-2000'><span foreground='white'><small>{capacity}%</small> </span><span rise='-3000'><big>{icon} </big></span></span>",
+            "format-icons": [
+            " ",
+            " ",
+            " ",
+            " ",
+            " "
+            ],
+        },

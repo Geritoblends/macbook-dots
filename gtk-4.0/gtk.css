@@ -1,0 +1,76 @@
+@define-color gruvbox-bg     #282828;  /* dark0 */
+@define-color gruvbox-bg1    #3c3836;  /* dark1 - sidebar */
+@define-color gruvbox-bg2    #504945;  /* dark2 - header/footer */
+@define-color gruvbox-fg     #ebdbb2;  /* light1 */
+@define-color gruvbox-accent #d79921;  /* yellow2 */
+@define-color gruvbox-blue   #458588;
+
+/* =============================
+   GENERAL TEXT COLOR
+   ============================= */
+* {
+    color: @gruvbox-fg;
+}
+
+/* =============================
+   MAIN FILE VIEW
+   ============================= */
+.view {
+    background-color: @gruvbox-bg;
+}
+
+/* Selected rows in file view */
+.view:selected,
+.view:selected:focus {
+    background-color: @gruvbox-blue;
+    color: @gruvbox-fg;
+}
+
+/* =============================
+   SIDEBAR (Places Panel)
+   ============================= */
+GtkPaned > GtkBox > GtkScrolledWindow > GtkViewport > GtkTreeView {
+    background-color: @gruvbox-bg1;
+}
+
+/* Selected items in sidebar */
+GtkTreeView:selected {
+    background-color: @gruvbox-blue;
+    color: @gruvbox-fg;
+}
+
+/* =============================
+   MENUBAR (Archivo, Editar, etc.)
+   ============================= */
+GtkMenuBar {
+    background-color: @gruvbox-bg2;
+    color: @gruvbox-fg;
+}
+
+/* =============================
+   TOOLBAR (Back, Forward, Up)
+   ============================= */
+GtkToolbar {
+    background-color: @gruvbox-bg2;
+    border: none;
+}
+
+GtkToolButton {
+    background-color: transparent;
+}
+
+/* =============================
+   PATH BAR (/home/gero)
+   ============================= */
+ThunarPathEntry,
+ThunarPathBar {
+    background-color: @gruvbox-bg2;
+}
+
+/* =============================
+   STATUS BAR
+   ============================= */
+GtkStatusbar {
+    background-color: @gruvbox-bg2;
+    color: @gruvbox-fg;
+}

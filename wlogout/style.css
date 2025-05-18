@@ -1,0 +1,38 @@
+* {
+	background-image: none;
+	box-shadow: none;
+    color: white;
+}
+
+window {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+button {
+    border-radius: 999px;
+	text-decoration-color: #FFFFFF;
+    color: #FFFFFF;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+    border: none;
+}
+
+button:focus, button:active {
+	outline-style: none;
+    box-shadow: 0px 0px 0px 3px alpha(#ebdbb2, 0.5);
+}
+
+#lock {
+    background-image: image(url("/home/gero/.config/wlogout/res/lock_gruvbox.png"), url("/home/gero/.config/wlogout/res/lock_gruvbox.png"));
+    color: red;
+}
+
+#shutdown {
+    background-image: image(url("/home/gero/.config/wlogout/res/shutdown_gruvbox.png"), url("/home/gero/.config/wlogout/res/shutdown_white.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/gero/.config/wlogout/res/reboot_gruvbox.png"), url("/home/gero/.config/wlogout/res/reboot_white.png"));
+}

@@ -1,0 +1,59 @@
+entry {
+border-radius: 20px 20px 0px 0px;
+min-height: 40px;
+background-color: alpha(#282828, 0.7);
+color: alpha(#ebdbb2, 0.6);
+border: solid 4px alpha(#fe8019, 0.6);
+/* border: solid 4px alpha(#ebdbb2, 0.6); */
+border-bottom: none;
+font-size: 22px;
+box-shadow: none;
+} 
+
+entry placeholder {
+	color: red;
+}
+
+entry:focus {
+  outline: none;
+}
+
+window {
+  background-color: transparent;
+}
+
+
+list {
+border-radius: 0px 0px 20px 20px;
+background-color: alpha(#282828, 0.7);
+min-height: 20px;
+/* border: solid 4px alpha(#ebdbb2, 0.6); */
+border: solid 4px alpha(#fe8019, 0.6);
+border-top: none;
+}
+
+list list {
+box-shadow: none;
+border-radius:0px;
+background-color: transparent;
+border: none;
+}
+
+#match {
+  background-color: transparent;
+  padding: 2px;
+  margin: 0px 6px 0px 6px;
+  border-radius: 8px;
+}
+
+#match:selected {
+  background-color: alpha(#ebdbb2, 0.2);
+}
+
+#plugin label, #plugin image {
+	color: alpha(#ebdbb2, 0.8);
+}
+
+#plugin image {
+	margin-left: 10px;
+}

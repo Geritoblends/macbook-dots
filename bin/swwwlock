@@ -1,0 +1,15 @@
+
+#!/bin/bash
+
+# Path to the new wallpaper image
+new_wallpaper="$1"
+
+# Path to your hyprlock.conf file
+config_path="$HOME/.config/hypr/hyprlock.conf"
+
+# Change wallpaper using swww
+swww img --transition-type wipe --transition-angle 30 --transition-step 90 "$new_wallpaper"
+
+# Update $wallpaper line in hyprlock.conf
+# Use sed to replace the line that starts with $wallpaper =
+sed -i "s|^\$wallpaper = .*|\$wallpaper = $new_wallpaper|" "$config_path"

@@ -1,0 +1,48 @@
+window.thunar {
+    background-color: #282828;
+}
+
+window.thunar * {
+    background-color: #282828;
+    color: #ebdbb2;
+    border-color: #a89984;
+    border-width: 0px;
+}
+
+
+window.tiled.tiled-top.tiled-right.tiled-bottom.tiled-left.maximized.menu,
+window.tiled.tiled-top.tiled-right.tiled-bottom.tiled-left.maximized.box, {
+    background-color: #282828;
+    color: #ebdbb2;
+    border-color: #7c6f64;
+    border-width: 0px;
+    box-shadow: none;
+}
+
+window.tiled.tiled-top.tiled-right.tiled-bottom.tiled-left.maximized switch:checked {
+    background-color: #fe8019;
+    color: #282828;
+    box-shadow: none;
+    border: none;
+}
+
+window.tiled.tiled-top.tiled-right.tiled-bottom.tiled-left.maximized switch {
+    background-color: #282828;
+}
+
+
+window.tiled.tiled-top.tiled-right.tiled-bottom.tiled-left.maximized.background {
+    background-color: #282828;
+    color: #ebdbb2;
+    border-color: #a89984;
+    border-width: 0px;
+}
+
+#ManagerDeviceList, toolbar {
+    background-color: #282828;
+    color: #ebdbb2;
+    fill: #ebdbb2;
+    border-color: #7c6f64;
+    border-width: 0px;
+
+}
