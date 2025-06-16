@@ -1,0 +1,54 @@
+entry {
+  border-radius: 20px 20px 0px 0px;
+  min-height: 40px;
+  background-color: alpha(black, 0.5);  /* base01 */
+  color: #f2f4f8;  /* base05 */
+  border: solid 4px #be95ff;  /* purple accent */
+  border-bottom: none;
+  font-size: 22px;
+  box-shadow: none;
+} 
+
+entry:focus {
+  outline: none;
+  border-color: #be95ff;  /* bright blue for focus */
+}
+
+window {
+  background-color: transparent;
+}
+
+list {
+  border-radius: 0px 0px 20px 20px;
+  background-color: alpha(black, 0.5);  /* base01 */
+  min-height: 20px;
+  border: solid 4px #be95ff;  /* purple accent */
+  border-top: none;
+  margin-bottom: 6px;
+}
+
+list list {
+  box-shadow: none;
+  border-radius: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+#match {
+  background-color: transparent;
+  padding: 2px;
+  margin: 0px 6px 0px 6px;
+  border-radius: 8px;
+}
+
+#match:selected {
+  background-color: alpha(#be95ff, 0.25);  /* purple with 25% opacity */
+}
+
+#plugin label, #plugin image {
+  color: #dde1e6;  /* base04 (slightly muted) */
+}
+
+#plugin image {
+  margin-left: 10px;
+}

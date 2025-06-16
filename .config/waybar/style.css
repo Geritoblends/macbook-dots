@@ -1,0 +1,199 @@
+@define-color bg_h         #161616; /* base00 - Hard contrast background */
+@define-color bg           #262626; /* base01 - Normal background */
+@define-color bg_s         #393939; /* base02 - Soft contrast background */
+@define-color bg0_h        #161616; /* base00 */
+@define-color bg0          #262626; /* base01 */
+@define-color bg0_s        #393939; /* base02 */
+@define-color bg1          #525252; /* base03 */
+@define-color bg2          #dde1e6; /* base04 */
+@define-color bg3          #f2f4f8; /* base05 */
+@define-color bg4          #ffffff; /* base06 */
+@define-color fg           #f2f4f8; /* base05 - Default foreground */
+@define-color fg0          #ffffff; /* base06 - Light foreground */
+@define-color fg1          #dde1e6; /* base04 - Secondary foreground */
+@define-color fg2          #525252; /* base03 - Muted foreground */
+@define-color fg3          #393939; /* base02 */
+@define-color fg4          #262626; /* base01 */
+
+/* Accent colors */
+@define-color red          #ee5396;  /* base0A */
+@define-color green        #42be65;  /* base0D */
+@define-color yellow       #be95ff;  /* base0E (purple as accent) */
+@define-color blue         #33b1ff;  /* base0B */
+@define-color purple       #be95ff;  /* base0E */
+@define-color aqua         #3ddbd9;  /* base08 */
+@define-color orange       #ee5396;  /* base0A (matches red) */
+@define-color gray         #525252;  /* base03 */
+
+/* Bright variants */
+@define-color red_bright   #ff7eb6;  /* base0C */
+@define-color green_bright #08bdba;  /* base07 */
+@define-color yellow_bright #be95ff; /* base0E */
+@define-color blue_bright  #78a9ff;  /* base09 */
+@define-color purple_bright #be95ff; /* base0E */
+@define-color aqua_bright  #08bdba;  /* base07 */
+@define-color orange_bright #ee5396; /* base0A */
+@define-color gray_bright  #dde1e6;  /* base04 */
+
+* {
+	font-family: "Inter", "JetBrains Mono NF";
+	font-size: 16px;
+	color: @fg;
+    text-shadow: none;
+}
+
+#waybar {
+    background-color:  rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid @fg;
+}
+
+
+tooltip {
+	border-radius: 10px;
+    background-color:  alpha(black, 0.5);
+    border: solid 2px @fg;
+}
+
+#custom-apple {
+    margin-left: 15px;
+    font-size: 25px;
+}
+
+#workspaces {
+	margin: 0 3px 5px 3px;
+    background-color: transparent;
+    border-radius: 0px 0px 15px 15px;
+
+}
+
+#workspaces button {
+    border-bottom: 1px solid transparent;
+    margin-bottom: 1px;
+    font-size: 5px;
+    border-radius: 8px;
+    padding: 4px;
+    padding-right: 9px;
+    background-image: none;
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    border-color: @fg;
+}
+
+#workspaces button.active {
+    border-bottom: 1px solid @fg;
+}
+
+#workspaces button.empty {
+}
+
+#workspaces button.urgent * {
+}
+
+
+
+#tray {
+	margin: 0px 2px;
+	border-radius: 0px;
+	background-color: alpha(black, 0.5);
+    border-bottom: 2px solid @fg;
+    color: @orange_bright;
+}
+
+#tray menu {
+    background-color:  rgba(255, 222, 222, 0.7);
+}
+
+#tray * {
+	padding: 0 6px;
+}
+
+#mode,
+#battery,
+#cpu,
+#network,
+#memory,
+#custom-spotlight,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#clock {
+	margin: 0px 2px;
+	padding: 0px 6px;
+	border-radius: 20px;
+	background-color: transparent;
+}
+
+#clock {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#cpu, #memory, #bluetooth, #network, #custom-spotlight {
+    color: @yellow_bright;
+}
+
+#custom-apple {
+    color: @purple_bright;
+}
+
+#clock:hover, 
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover, 
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-finder:hover,
+#custom-spotlight:hover {
+    transition: all .1s ease;
+    color: @blue_bright;
+}
+
+#battery {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @fg;
+}
+
+#battery.charging {
+    color: @green_bright;
+}
+
+#battery.warning:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging.full {
+    color: @orange_bright;
+}
+
+@keyframes blink {
+    to {
+        color: @fg;
+    }
+}
+
+#custom-cava {
+    margin: 0px 10px;
+}
+
+#mpd {
+    margin-top: 5px;
+}

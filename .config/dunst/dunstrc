@@ -1,0 +1,24 @@
+[global]
+    font = "Inter", "JetBrainsMono NF" 12
+    width = 300
+    padding = 20
+    corner_radius = 16
+    frame_width = 4
+    background = "#000000CC"  # base01 with transparency
+    foreground = "#f2f4f8"    # base05
+    frame_color = "#be95ff"   # base0E (purple accent)
+    gap_size = 5
+
+[urgency_low]
+    timeout = 3
+    frame_color = "#393939"   # base02
+    foreground = "#dde1e6"    # base04
+
+[urgency_normal]
+    timeout = 5
+    frame_color = "#be95ff"   # base0E (purple accent)
+
+[urgency_critical]
+    timeout = 15
+    foreground = "#ee5396"    # base0A (error red)
+    frame_color = "#ee5396"   # base0A

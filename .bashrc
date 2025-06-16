@@ -3,7 +3,6 @@
 #
 
 # If not running interactively, don't do anything
-pfetch
 
 eval "$(starship init bash)"
 [[ $- != *i* ]] && return
@@ -49,3 +48,10 @@ alias deact='deactivate'
 alias mimeappsconf="nvim -n /home/gero/.config/mimeapps.list"
 alias starshipconf="nvim -n /home/gero/.config/starship.toml"
 alias dunstconf="nvim -n /home/gero/.config/dunst/dunstrc"
+alias tec="cd /home/gero/Documentos/Tec"
+alias neofetch="fastfetch"
+alias wallpapers="cd /home/gero/Documentos/wallpapers"
+alias songs="ncmpcpp"
+alias off="poweroff"
+alias woficonf="nvim /home/gero/.config/wofi/config"
+alias neofetch="fastfetch --logo-padding-top 5"

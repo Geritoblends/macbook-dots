@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Define your repo path
+DOTS_DIR="$HOME/dots"
+CONFIG_DIR="$DOTS_DIR/.config"
+
+# Create necessary folders
+mkdir -p "$CONFIG_DIR/hypr" "$CONFIG_DIR/wlogout/res" "$CONFIG_DIR/waybar" "$CONFIG_DIR/anyrun" "$CONFIG_DIR/nvim" "$CONFIG_DIR/dunst" "$CONFIG_DIR/fastfetch" "$CONFIG_DIR/kitty" "$CONFIG_DIR/mpd" "$CONFIG_DIR/ncmpcpp" "$CONFIG_DIR/mpv" "$CONFIG_DIR/.local/bin" "$CONFIG_DIR/wofi"
+
+# Copy files
+# Hyprland & Hyprlock
+cp -f "$HOME/.config/hypr/"*.conf "$CONFIG_DIR/hypr/"
+
+# Wlogout
+cp -f "$HOME/.config/wlogout/"{layout,style.css} "$CONFIG_DIR/wlogout/"
+cp -rf "$HOME/.config/wlogout/res/"* "$CONFIG_DIR/wlogout/res/"
+
+# Anyrun
+cp -rf "$HOME/.config/anyrun/"* "$CONFIG_DIR/anyrun/"
+cp -f "$HOME/.config/kidex.ron" "$CONFIG_DIR/kidex.ron"
+
+# Wofi
+cp -rf "$HOME/.config/wofi/"* "$CONFIG_DIR/wofi/"
+
+# Waybar
+cp -rf "$HOME/.config/waybar/"* "$CONFIG_DIR/waybar/"
+
+# Neovim
+cp -f "$HOME/.config/nvim/init.lua" "$CONFIG_DIR/nvim/"
+cp -rf "$HOME/.config/nvim/lua/"* "$CONFIG_DIR/nvim/lua/"
+
+# Dunst
+cp -f "$HOME/.config/dunst/dunstrc" "$CONFIG_DIR/dunst/dunstrc"
+
+# fastfetch
+cp -rf "$HOME/.config/fastfetch/"* "$CONFIG_DIR/fastfetch/"
+
+# Kitty
+cp -f "$HOME/.config/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
+
+# MPD
+cp -f "$HOME/.config/mpd/mpd.conf" "$CONFIG_DIR/mpd/mpd.conf"
+
+# NCMPCPP
+cp -f "$HOME/.config/ncmpcpp/config" "$CONFIG_DIR/ncmpcpp/config"
+cp -f "$HOME/.config/ncmpcpp/bindings" "$CONFIG_DIR/ncmpcpp/bindings"
+
+# Bashrc
+cp -f "$HOME/.bashrc" "$DOTS_DIR/"
+
+# Zshrc
+cp -f "$HOME/.zshrc" "$DOTS_DIR/"
+
+# Starship.toml
+cp -f "$HOME/.config/starship.toml" "$DOTS_DIR/starship.toml"
+
+# .local/bin
+cp -rf "$HOME/.local/bin/"* "$CONFIG_DIR/.local/bin/"
+
+
+# Git stage, commit, and push
+git -C "$DOTS_DIR" add .
+git -C "$DOTS_DIR" commit -m "Update dotfiles on $(date '+%Y-%m-%d %H:%M')"
+git -C "$DOTS_DIR" push
+
+
+echo "✅ Dotfiles synced and pushed to GitHub!"
