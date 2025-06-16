@@ -4,9 +4,9 @@ format = """
 [╭─](bold #f2f4f8)[](#be95ff)\
 $os\
 $username\
-[](bg:#d79921 fg:#be95ff)\
+[](bg:#be95ff fg:#be95ff)\
 $directory\
-[](fg:#d79921 bg:#33b1ff)\
+[](fg:#be95ff bg:#33b1ff)\
 $git_branch\
 $git_status\
 [](fg:#33b1ff bg:#78a9ff)\
@@ -76,7 +76,7 @@ style_root = "bg:#ee5396 fg:#161616"   # Red for root
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:#161616 bg:#d79921"  # Yellow background
+style = "fg:#161616 bg:#be95ff"  
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
