@@ -1,9 +1,9 @@
 entry {
   border-radius: 20px 20px 0px 0px;
   min-height: 40px;
-  background-color: alpha(black, 0.5);  /* base01 */
-  color: #f2f4f8;  /* base05 */
-  border: solid 4px #be95ff;  /* purple accent */
+  background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
+  color: #cdd6f4;  /* base05 */
+  border: solid 3px #cba6f7;  /* base0E (mauve accent) */
   border-bottom: none;
   font-size: 22px;
   box-shadow: none;
@@ -11,7 +11,6 @@ entry {
 
 entry:focus {
   outline: none;
-  border-color: #be95ff;  /* bright blue for focus */
 }
 
 window {
@@ -20,9 +19,9 @@ window {
 
 list {
   border-radius: 0px 0px 20px 20px;
-  background-color: alpha(black, 0.5);  /* base01 */
+  background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
   min-height: 20px;
-  border: solid 4px #be95ff;  /* purple accent */
+  border: solid 3px #cba6f7;  /* base0E (mauve accent) */
   border-top: none;
   margin-bottom: 6px;
 }
@@ -42,11 +41,11 @@ list list {
 }
 
 #match:selected {
-  background-color: alpha(#be95ff, 0.25);  /* purple with 25% opacity */
+  background-color: rgba(203, 166, 247, 0.25);  /* base0E (mauve) with 25% opacity */
 }
 
 #plugin label, #plugin image {
-  color: #dde1e6;  /* base04 (slightly muted) */
+  color: #cdd6f4;  /* base04 (muted text) */
 }
 
 #plugin image {

@@ -31,54 +31,36 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- Plugin setup with lazy.nvim
 require("lazy").setup({
-    {
-        "Exafunction/windsurf.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        },
-        config = function()
-            require("codeium").setup({
-                virtual_text = {
-                    enabled = true,
-                    manual = false,
-                    key_bindings = {
-                        accept = "<M-i>",
-                        accept_word = false,
-                        accept_line = false,
-                        next = "<M-j>",
-                        prev = "<M-k>",
-                        dismiss = "<M-u>",
-                    },
-                },
-
-
-            })
-        end
-    },
+    -- {
+    --     "Exafunction/windsurf.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("codeium").setup({
+    --             virtual_text = {
+    --                 enabled = true,
+    --                 manual = false,
+    --                 key_bindings = {
+    --                     accept = "<M-i>",
+    --                     accept_word = false,
+    --                     accept_line = false,
+    --                     next = "<M-j>",
+    --                     prev = "<M-k>",
+    --                     dismiss = "<M-u>",
+    --                 },
+    --             },
+    --
+    --
+    --         })
+    --     end
+    -- },
     {
         'numToStr/Comment.nvim',
         opts = {
             -- hey
         }
-    },
-    {
-        'saghen/blink.cmp',
-        dependencies = {
-            {
-                'rafamadriz/friendly-snippets'
-            },
-        },
-        version = 'v0.*',
-        opts = {
-            keymap = { preset = 'default' },
-
-            appearance = {
-                use_nvim_cmp_as_default = true,
-                nerd_font_variant = 'mono'
-            },
-            signature = { enabled = true }
-        },
     },
 
     -- nvim-tree file explorer
@@ -154,7 +136,22 @@ require("lazy").setup({
                 ensure_installed = { "lua", "vim", "bash", "markdown", "python", "javascript", "typescript", "tsx", "html", "css" },
                 highlight = { enable = true },
                 indent = { enable = true },
-                autotag = { enable = true },
+            })
+            require('nvim-ts-autotag').setup({
+                opts = {
+                    -- Defaults
+                    enable_close = true,          -- Auto close tags
+                    enable_rename = true,         -- Auto rename pairs of tags
+                    enable_close_on_slash = false -- Auto close on trailing </
+                },
+                -- Also override individual filetype configs, these take priority.
+                -- Empty by default, useful if one of the "opts" global settings
+                -- doesn't work well in a specific filetype
+                per_filetype = {
+                    ["html"] = {
+                        enable_close = true
+                    }
+                }
             })
         end,
     },
@@ -222,53 +219,53 @@ require("lazy").setup({
             },
         },
     },
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require('lualine').setup({
-                options = {
-                    icons_enabled = true,
-                    theme = 'auto',
-                    component_separators = { left = '', right = '' },
-                    section_separators = { left = '', right = '' },
-                    disabled_filetypes = {
-                        statusline = {},
-                        winbar = {},
-                    },
-                    ignore_focus = {},
-                    always_divide_middle = true,
-                    always_show_tabline = true,
-                    globalstatus = false,
-                    refresh = {
-                        statusline = 100,
-                        tabline = 100,
-                        winbar = 100,
-                    }
-                },
-                sections = {
-                    lualine_a = { 'mode' },
-                    lualine_b = { 'branch', 'diff', 'diagnostics' },
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-                    lualine_y = { 'progress' },
-                    lualine_z = { 'location' }
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { 'filename' },
-                    lualine_x = { 'location' },
-                    lualine_y = {},
-                    lualine_z = {}
-                },
-                tabline = {},
-                winbar = {},
-                inactive_winbar = {},
-                extensions = {}
-            })
-        end,
-    },
+    -- {
+    --     "nvim-lualine/lualine.nvim",
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     config = function()
+    --         require('lualine').setup({
+    --             options = {
+    --                 icons_enabled = true,
+    --                 theme = 'auto',
+    --                 component_separators = { left = '', right = '' },
+    --                 section_separators = { left = '', right = '' },
+    --                 disabled_filetypes = {
+    --                     statusline = {},
+    --                     winbar = {},
+    --                 },
+    --                 ignore_focus = {},
+    --                 always_divide_middle = true,
+    --                 always_show_tabline = true,
+    --                 globalstatus = false,
+    --                 refresh = {
+    --                     statusline = 100,
+    --                     tabline = 100,
+    --                     winbar = 100,
+    --                 }
+    --             },
+    --             sections = {
+    --                 lualine_a = { 'mode' },
+    --                 lualine_b = { 'branch', 'diff', 'diagnostics' },
+    --                 lualine_c = { 'filename' },
+    --                 lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    --                 lualine_y = { 'progress' },
+    --                 lualine_z = { 'location' }
+    --             },
+    --             inactive_sections = {
+    --                 lualine_a = {},
+    --                 lualine_b = {},
+    --                 lualine_c = { 'filename' },
+    --                 lualine_x = { 'location' },
+    --                 lualine_y = {},
+    --                 lualine_z = {}
+    --             },
+    --             tabline = {},
+    --             winbar = {},
+    --             inactive_winbar = {},
+    --             extensions = {}
+    --         })
+    --     end,
+    -- },
     {
         "sphamba/smear-cursor.nvim",
 
@@ -286,12 +283,17 @@ require("lazy").setup({
             -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
             -- Smears will blend better on all backgrounds.
             legacy_computing_symbols_support = false,
-
-            -- Smear cursor in insert mode.
-            -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
             smear_insert_mode = true,
         },
-    }
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+    },
+
 })
 -- Basic keymaps
 vim.keymap.set("n", "<leader>w", ":w<CR>")
@@ -336,4 +338,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
 })
 
-require("colors.maincolorscheme").setup()
+require("colors.catppuccinmocha").setup()

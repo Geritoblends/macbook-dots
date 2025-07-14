@@ -10,7 +10,7 @@ Config(
   y: Absolute(200),
 
   // The width of the runner
-  width: Absolute(800),
+  width: Absolute(600),
 
   // The minimum height of the runner, the runner will expand to fit all the entries
   height: Absolute(0),

@@ -1,112 +1,111 @@
-@define-color bg_h         #161616; /* base00 - Hard contrast background */
-@define-color bg           #262626; /* base01 - Normal background */
-@define-color bg_s         #393939; /* base02 - Soft contrast background */
-@define-color bg0_h        #161616; /* base00 */
-@define-color bg0          #262626; /* base01 */
-@define-color bg0_s        #393939; /* base02 */
-@define-color bg1          #525252; /* base03 */
-@define-color bg2          #dde1e6; /* base04 */
-@define-color bg3          #f2f4f8; /* base05 */
-@define-color bg4          #ffffff; /* base06 */
-@define-color fg           #f2f4f8; /* base05 - Default foreground */
-@define-color fg0          #ffffff; /* base06 - Light foreground */
-@define-color fg1          #dde1e6; /* base04 - Secondary foreground */
-@define-color fg2          #525252; /* base03 - Muted foreground */
-@define-color fg3          #393939; /* base02 */
-@define-color fg4          #262626; /* base01 */
 
-/* Accent colors */
-@define-color red          #ee5396;  /* base0A */
-@define-color green        #42be65;  /* base0D */
-@define-color yellow       #be95ff;  /* base0E (purple as accent) */
-@define-color blue         #33b1ff;  /* base0B */
-@define-color purple       #be95ff;  /* base0E */
-@define-color aqua         #3ddbd9;  /* base08 */
-@define-color orange       #ee5396;  /* base0A (matches red) */
-@define-color gray         #525252;  /* base03 */
+@define-color base00 #1e1e2e; /* base */
+@define-color base01 #181825; /* mantle */
+@define-color base02 #313244; /* surface0 */
+@define-color base03 #45475a; /* surface1 */
+@define-color base04 #585b70; /* surface2 */
+@define-color base05 #cdd6f4; /* text */
+@define-color base06 #f5e0dc; /* rosewater */
+@define-color base07 #b4befe; /* lavender */
 
-/* Bright variants */
-@define-color red_bright   #ff7eb6;  /* base0C */
-@define-color green_bright #08bdba;  /* base07 */
-@define-color yellow_bright #be95ff; /* base0E */
-@define-color blue_bright  #78a9ff;  /* base09 */
-@define-color purple_bright #be95ff; /* base0E */
-@define-color aqua_bright  #08bdba;  /* base07 */
-@define-color orange_bright #ee5396; /* base0A */
-@define-color gray_bright  #dde1e6;  /* base04 */
+@define-color red       #f38ba8;
+@define-color peach     #fab387;
+@define-color yellow    #f9e2af;
+@define-color green     #a6e3a1;
+@define-color teal      #94e2d5;
+@define-color blue      #89b4fa;
+@define-color mauve     #cba6f7;
+@define-color flamingo  #f2cdcd;
+
+@define-color fg        @base05;
+@define-color bg        @base00;
+@define-color accent    @mauve;
 
 * {
-	font-family: "Inter", "JetBrains Mono NF";
-	font-size: 16px;
-	color: @fg;
+    font-family: "Inter", "JetBrains Mono NF";
+    font-size: 15px;
+    font-weight: 600;
+    color: @fg;
     text-shadow: none;
 }
 
 #waybar {
-    background-color:  rgba(0, 0, 0, 0.5);
-    border-bottom: 2px solid @fg;
+    background-color: transparent;
 }
 
+.modules-left, .modules-center, .modules-right {
+    background-color: rgba(30, 30, 46, 0.7); /* base00 with opacity */
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    box-shadow: 0px 0px 1.4px rgba(0, 0, 0, 0.9);
+    transition: all .4s ease;
+}
+
+.modules-left {
+    margin-left: 10px;
+}
+
+.modules-right {
+    margin-right: 10px;
+}
 
 tooltip {
-	border-radius: 10px;
-    background-color:  alpha(black, 0.5);
-    border: solid 2px @fg;
+    border-radius: 10px;
+    background-color: rgba(24, 24, 37, 0.9); /* base01 with opacity */
+    border: solid 2px @accent;
 }
 
 #custom-apple {
-    margin-left: 15px;
-    font-size: 25px;
+    margin-left: 5px;
+    font-size: 20px;
+    color: @yellow;
 }
 
 #workspaces {
-	margin: 0 3px 5px 3px;
+    margin: 0 3px 0px 3px;
     background-color: transparent;
     border-radius: 0px 0px 15px 15px;
-
 }
 
 #workspaces button {
-    border-bottom: 1px solid transparent;
-    margin-bottom: 1px;
     font-size: 5px;
     border-radius: 8px;
-    padding: 4px;
-    padding-right: 9px;
+    padding: 0px;
+    padding-right: 4px;
     background-image: none;
-    background-color: transparent;
+    transition: all .4s ease;
 }
 
-#workspaces button:hover {
-    border-color: @fg;
+#workspaces button * {
+    transition: all .3s ease;
+    border: solid 0px transparent;
 }
 
-#workspaces button.active {
-    border-bottom: 1px solid @fg;
+#workspaces button.empty * {
+    color: alpha(#000000, 0.3);
 }
 
-#workspaces button.empty {
+#workspaces button.active * {
+    color: @yellow;
 }
 
-#workspaces button.urgent * {
+#workspaces button:hover * {
+    color: @yellow;
 }
-
-
 
 #tray {
-	margin: 0px 2px;
-	border-radius: 0px;
-	background-color: alpha(black, 0.5);
-    border-bottom: 2px solid @fg;
-    color: @orange_bright;
+    margin: 0px 2px;
+    border-radius: 0px;
 }
 
 #tray menu {
-    background-color:  rgba(255, 222, 222, 0.7);
+    background-color: rgba(255, 222, 222, 0.7);
 }
 
 #tray * {
-	padding: 0 6px;
+    padding: 0 6px;
+    color: @peach;
 }
 
 #mode,
@@ -119,10 +118,10 @@ tooltip {
 #pulseaudio,
 #backlight,
 #clock {
-	margin: 0px 2px;
-	padding: 0px 6px;
-	border-radius: 20px;
-	background-color: transparent;
+    margin: 0px 2px;
+    padding: 0px 6px;
+    border-radius: 20px;
+    background-color: transparent;
 }
 
 #clock {
@@ -131,25 +130,21 @@ tooltip {
 }
 
 #cpu, #memory, #bluetooth, #network, #custom-spotlight {
-    color: @yellow_bright;
+    color: @yellow;
+    transition: all .4s ease;
 }
 
-#custom-apple {
-    color: @purple_bright;
-}
-
-#clock:hover, 
+#clock:hover,
 #custom-notification:hover,
 #bluetooth:hover,
 #network:hover,
-#battery:hover, 
+#battery:hover,
 #cpu:hover,
 #memory:hover,
 #temperature:hover,
 #custom-finder:hover,
 #custom-spotlight:hover {
-    transition: all .1s ease;
-    color: @blue_bright;
+    color: @blue;
 }
 
 #battery {
@@ -159,18 +154,10 @@ tooltip {
 }
 
 #battery.charging {
-    color: @green_bright;
+    color: @green;
 }
 
-#battery.warning:not(.charging) {
-    color: @red;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
+#battery.warning:not(.charging),
 #battery.critical:not(.charging) {
     color: @red;
     animation-name: blink;
@@ -181,7 +168,7 @@ tooltip {
 }
 
 #battery.charging.full {
-    color: @orange_bright;
+    color: @peach;
 }
 
 @keyframes blink {
@@ -192,8 +179,4 @@ tooltip {
 
 #custom-cava {
     margin: 0px 10px;
-}
-
-#mpd {
-    margin-top: 5px;
 }
