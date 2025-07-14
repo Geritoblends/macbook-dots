@@ -3,7 +3,7 @@ entry {
   min-height: 40px;
   background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
   color: #cdd6f4;  /* base05 */
-  border: solid 3px #cba6f7;  /* base0E (mauve accent) */
+  border: solid 3px #cdd6f4;  /* base0E (mauve accent) */
   border-bottom: none;
   font-size: 22px;
   box-shadow: none;
@@ -21,7 +21,7 @@ list {
   border-radius: 0px 0px 20px 20px;
   background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
   min-height: 20px;
-  border: solid 3px #cba6f7;  /* base0E (mauve accent) */
+  border: solid 3px #cdd6f4;  /* base0E (mauve accent) */
   border-top: none;
   margin-bottom: 6px;
 }
