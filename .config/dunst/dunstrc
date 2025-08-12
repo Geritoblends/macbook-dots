@@ -3,22 +3,22 @@
     width = 300
     padding = 20
     corner_radius = 16
-    frame_width = 4
-    background = "#18182566"  # base01 with transparency
+    frame_width = 2
+    background = "#18182599"  # base01 with transparency
     foreground = "#cdd6f4"    # base05
-    frame_color = "#f9e2af66"   # base0E (purple accent)
+    frame_color = "#f9e2af"   # base0E (purple accent)
     gap_size = 5
 
 [urgency_low]
     timeout = 3
-    frame_color = "#f9e2af66"   # yellow
+    frame_color = "#f9e2af"   # yellow
     foreground = "#cdd6f4"    # base04
 
 [urgency_normal]
     timeout = 5
-    frame_color = "#f9e2af66"   # base0E (purple accent)
+    frame_color = "#f9e2af"   # base0E (purple accent)
 
 [urgency_critical]
     timeout = 15
     foreground = "#f2cdcd"    # base0A (error red)
-    frame_color = "#f2cdcd66"   # base0A
+    frame_color = "#f2cdcd"   # base0A

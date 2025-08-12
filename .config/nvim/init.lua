@@ -160,6 +160,11 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
+            require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = { "target/" },
+                },
+            })
             local telescope = require("telescope.builtin")
             vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
             vim.keymap.set("n", "<leader>fg", telescope.live_grep, {})
@@ -305,6 +310,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<leader>rp", ":w<CR>:!poetry run python %<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>rr", ":w<CR>:!Rscript %<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>rg", ":w<CR>:!go run %<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<leader>sv", ":vsp<CR>", { noremap = true, silent = false })
 
 -- Add this to the end of your init.lua file
 
