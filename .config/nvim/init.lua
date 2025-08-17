@@ -312,6 +312,10 @@ vim.keymap.set("n", "<leader>rr", ":w<CR>:!Rscript %<CR>", { noremap = true, sil
 vim.keymap.set("n", "<leader>rg", ":w<CR>:!go run %<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>sv", ":vsp<CR>", { noremap = true, silent = false })
+vim.keymap.set("n", "<leader>pa", "\"apA", { noremap = true, silent = false })
+vim.keymap.set("n", "<C-k>", "kdd", { noremap = true, silent = false })
+vim.keymap.set("n", "<A-k>", "O<Esc>j", { desc = "Insert empty line above" })
+vim.keymap.set("n", "<A-j>", "o<Esc>", { desc = "Insert empty line below" })
 
 -- Add this to the end of your init.lua file
 
