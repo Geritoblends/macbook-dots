@@ -1,25 +1,24 @@
+@define-color base00 #2e3440;  /* nord0 */
+@define-color base01 #3b4252;  /* nord1 */
+@define-color base02 #434c5e;  /* nord2 */
+@define-color base03 #4c566a;  /* nord3 */
+@define-color base04 #d8dee9;  /* nord4 */
+@define-color base05 #e5e9f0;  /* nord5 */
+@define-color base06 #eceff4;  /* nord6 */
+@define-color base07 #8fbcbb;  /* nord7 */
 
-@define-color base00 #1e1e2e; 
-@define-color base01 #181825; /* mantle */
-@define-color base02 #313244; /* surface0 */
-@define-color base03 #45475a; /* surface1 */
-@define-color base04 #585b70; /* surface2 */
-@define-color base05 #cdd6f4; /* text */
-@define-color base06 #f5e0dc; /* rosewater */
-@define-color base07 #b4befe; /* lavender */
+@define-color red       #bf616a;  /* nord11 */
+@define-color peach     #d08770;  /* nord12 */
+@define-color yellow    #ebcb8b;  /* nord13 */
+@define-color green     #a3be8c;  /* nord14 */
+@define-color teal      #88c0d0;  /* nord9 */
+@define-color blue      #81a1c1;  /* nord10 */
+@define-color mauve     #b48ead;  /* nord15 */
+@define-color flamingo  #5e81ac;  /* nord8 */
 
-@define-color red       #f38ba8;
-@define-color peach     #fab387;
-@define-color yellow    #f9e2af;
-@define-color green     #a6e3a1;
-@define-color teal      #94e2d5;
-@define-color blue      #89b4fa;
-@define-color mauve     #cba6f7;
-@define-color flamingo  #f2cdcd;
-
-@define-color fg        @base05;
+@define-color fg        @base04;
 @define-color bg        @base00;
-@define-color accent    @mauve;
+@define-color accent    @blue;
 
 * {
     font-family: "Inter", "JetBrains Mono NF";
@@ -59,7 +58,7 @@ tooltip {
 #custom-apple {
     margin-left: 5px;
     font-size: 20px;
-    color: @yellow;
+    color: @blue;
 }
 
 #workspaces {
@@ -80,6 +79,8 @@ tooltip {
 #workspaces button * {
     transition: all .3s ease;
     border: solid 0px transparent;
+    box-shadow: transparent;
+    outline: transparent;
 }
 
 #workspaces button.empty * {
@@ -87,11 +88,14 @@ tooltip {
 }
 
 #workspaces button.active * {
-    color: @yellow;
+    color: @blue;
 }
 
 #workspaces button:hover * {
-    color: @yellow;
+    color: @peach;
+}
+
+#workspaces button:hover {
 }
 
 #tray {
@@ -130,7 +134,7 @@ tooltip {
 }
 
 #cpu, #memory, #bluetooth, #network, #custom-spotlight {
-    color: @yellow;
+    color: @blue;
     transition: all .4s ease;
 }
 
@@ -144,7 +148,7 @@ tooltip {
 #temperature:hover,
 #custom-finder:hover,
 #custom-spotlight:hover {
-    color: @blue;
+    color: @peach;
 }
 
 #battery {

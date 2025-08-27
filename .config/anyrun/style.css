@@ -1,9 +1,9 @@
 entry {
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 20px 5px 0px 0px;
   min-height: 40px;
-  background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
-  color: #cdd6f4;  /* base05 */
-  border: solid 3px #cdd6f4;  /* base0E (mauve accent) */
+  background-color: rgba(59, 66, 82, 0.8);  /* nord1 with 50% opacity */
+  color: #d8dee9;  /* nord4 */
+  border: solid 0px #d8dee9;  /* nord15 (purple accent) */
   border-bottom: none;
   font-size: 22px;
   box-shadow: none;
@@ -18,10 +18,10 @@ window {
 }
 
 list {
-  border-radius: 0px 0px 20px 20px;
-  background-color: rgba(24, 24, 37, 0.5);  /* base01 with 50% opacity */
+  border-radius: 0px 0px 20px 5px;
+  background-color: rgba(59, 66, 82, 0.8);  /* nord1 with 50% opacity */
   min-height: 20px;
-  border: solid 3px #cdd6f4;  /* base0E (mauve accent) */
+  border: solid 0px #d8dee9;  /* nord15 (purple accent) */
   border-top: none;
   margin-bottom: 6px;
 }
@@ -41,11 +41,11 @@ list list {
 }
 
 #match:selected {
-  background-color: rgba(203, 166, 247, 0.25);  /* base0E (mauve) with 25% opacity */
+  background-color: rgba(180, 142, 173, 0.25);  /* nord15 with 25% opacity */
 }
 
 #plugin label, #plugin image {
-  color: #cdd6f4;  /* base04 (muted text) */
+  color: #d8dee9;  /* nord4 */
 }
 
 #plugin image {

@@ -9,7 +9,7 @@ window {
 }
 
 button {
-    border-radius: 999px;
+    border-radius: 10px;
 	text-decoration-color: #f9e2af;
     color: #f9e2af;
 	background-color: transparent;
@@ -21,18 +21,18 @@ button {
 
 button:focus, button:active {
 	outline-style: none;
-    box-shadow: 0px 0px 0px 3px alpha(#f9e2af, 0.5);
+    box-shadow: 0px 0px 0px 3px alpha(#81a1c1, 0.5);
 }
 
 #lock {
-    background-image: image(url("/home/gero/.config/wlogout/res/lock_gruvbox.png"), url("/home/gero/.config/wlogout/res/lock_gruvbox.png"));
+    background-image: image(url("/home/gero/.config/wlogout/res/lock_81a1c1.png"), url("/home/gero/.config/wlogout/res/lock_81a1c1.png"));
     color: red;
 }
 
 #shutdown {
-    background-image: image(url("/home/gero/.config/wlogout/res/shutdown_gruvbox.png"), url("/home/gero/.config/wlogout/res/shutdown_gruvbox.png"));
+    background-image: image(url("/home/gero/.config/wlogout/res/shutdown_81a1c1.png"), url("/home/gero/.config/wlogout/res/shutdown_81a1c1.png"));
 }
 
 #reboot {
-    background-image: image(url("/home/gero/.config/wlogout/res/reboot_gruvbox.png"), url("/home/gero/.config/wlogout/res/reboot_gruvbox.png"));
+    background-image: image(url("/home/gero/.config/wlogout/res/reboot_81a1c1.png"), url("/home/gero/.config/wlogout/res/reboot_81a1c1.png"));
 }

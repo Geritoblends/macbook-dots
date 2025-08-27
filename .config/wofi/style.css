@@ -1,5 +1,5 @@
 * {
-    color: #f2f4f8;       /* base05 */
+    color: #d8dee9;       /* nord4 - bright text */
     font-size: 16px;
     font-family: "Inter", "JetBrainsMono NF";
 }
@@ -7,21 +7,21 @@
 window {
     padding: 20px;
     border-radius: 15px;
-    background-color: alpha(black, 0.5);  /* base00 with 50% opacity */
-    border: solid 2px white;    /* purple accent border */
+    background-color: rgba(46, 52, 64, 0.5);  /* nord0 with 50% opacity */
+    border: solid 2px #81a1c1;    /* nord9 accent border */
 }
 
 #input {
     margin: 25px;
     border-radius: 15px;
-    background-color: alpha(black, 0.2);    /* base01 */
-    border: solid 2px white;    /* purple accent */
-    color: #f2f4f8;               /* base05 */
+    background-color: rgba(59, 66, 82, 0.2);    /* nord1 with opacity */
+    border: solid 2px #81a1c1;    /* nord9 accent */
+    color: #d8dee9;               /* nord4 */
 }
 
 #input:focus {
     box-shadow: none;
-    border: solid 2px #78a9ff;    /* blue for focus state */
+    border: solid 2px #5e81ac;    /* nord10 for focus state */
 }
 
 #entry {
@@ -37,13 +37,13 @@ window {
 }
 
 #entry:selected #text {
-    color: #be95ff;               /* purple accent text */
+    color: #b48ead;               /* nord15 (purple) accent text */
     font-weight: bold;
 }
 
 #unselected {
     margin-left: 30px;
-    color: #525252;               /* base03 (muted) */
+    color: #4c566a;               /* nord3 (muted) */
 }
 
 scrollbar {

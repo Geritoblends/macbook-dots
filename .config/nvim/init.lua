@@ -313,9 +313,10 @@ vim.keymap.set("n", "<leader>rg", ":w<CR>:!go run %<CR>", { noremap = true, sile
 vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>sv", ":vsp<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>pa", "\"apA", { noremap = true, silent = false })
-vim.keymap.set("n", "<C-k>", "kdd", { noremap = true, silent = false })
+vim.keymap.set("n", "<S-k>", "kdd", { noremap = true, silent = false })
 vim.keymap.set("n", "<A-k>", "O<Esc>j", { desc = "Insert empty line above" })
 vim.keymap.set("n", "<A-j>", "o<Esc>", { desc = "Insert empty line below" })
+vim.keymap.set("n", "<leader>rty", ":!typora %<CR>", { desc = "Insert empty line below" })
 
 -- Add this to the end of your init.lua file
 
@@ -349,4 +350,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
 })
 
-require("colors.catppuccinmocha").setup()
+require("colors.nord").setup()
