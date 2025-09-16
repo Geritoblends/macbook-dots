@@ -33,9 +33,9 @@
 }
 
 .modules-left, .modules-center, .modules-right {
-    background-color: alpha(@bg, 0.7); /* base00 with opacity */
-    border-radius: 10px;
-    margin-top: 5px;
+    background-color: alpha(#141419, 1); /* base00 with opacity */
+    border-radius: 0px 0px 10px 10px;
+    margin-top: 0px;
     margin-bottom: 3px;
     box-shadow: none;
     transition: all .4s ease;
@@ -43,10 +43,15 @@
 
 .modules-left {
     margin-left: 10px;
+    background-color: transparent;
 }
 
 .modules-right {
     margin-right: 10px;
+}
+
+.modules-center {
+    background-color: transparent;
 }
 
 tooltip {
@@ -58,7 +63,7 @@ tooltip {
 #custom-apple {
     margin-left: 5px;
     font-size: 20px;
-    color: @blue;
+    color: @fg;
 }
 
 #workspaces {
@@ -84,7 +89,7 @@ tooltip {
 }
 
 #workspaces button.empty * {
-    color: alpha(#000000, 0.3);
+    color: alpha(@fg, 0.2);
 }
 
 #workspaces button.active * {

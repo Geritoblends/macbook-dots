@@ -1,0 +1,8 @@
+#!/bin/bash
+# darken and desaturate an image
+# Usage: $ sadden_img input.jpg output.jpg
+
+input="$1"
+output="$2"
+
+magick "$input" -modulate 60,60,100 "$output"

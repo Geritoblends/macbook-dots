@@ -6,16 +6,17 @@
 
 window {
     padding: 20px;
-    border-radius: 15px;
-    background-color: rgba(46, 52, 64, 0.5);  /* nord0 with 50% opacity */
-    border: solid 2px #81a1c1;    /* nord9 accent border */
+    border-radius: 0px;
+    background-color: #141419;  /* nord0 with 50% opacity */
+    border: solid 3px #2e3440;    /* nord9 accent border */
+    box-shadow: 0px 0px 0px 0px transparent;
 }
 
 #input {
     margin: 25px;
     border-radius: 15px;
     background-color: rgba(59, 66, 82, 0.2);    /* nord1 with opacity */
-    border: solid 2px #81a1c1;    /* nord9 accent */
+    border: solid 2px #2e3440;    /* nord9 accent */
     color: #d8dee9;               /* nord4 */
 }
 

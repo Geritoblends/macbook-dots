@@ -1,38 +1,46 @@
 * {
+    font-family: "JetBrains Mono NF";
 	background-image: none;
 	box-shadow: none;
     color: white;
 }
 
 window {
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: alpha(#191724, 0.5);
 }
 
 button {
-    border-radius: 10px;
 	text-decoration-color: #f9e2af;
     color: #f9e2af;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 25%;
     border: none;
+    background-image: none;
+    background-size: 1%;
+    margin: 60px;
 }
+
+button * {
+    border: solid 3px #c4a7e7;
+    border-radius: 15px;
+    background-color: #191724;
+    margin-top: 250px;
+    padding-bottom: 15px;
+}
+
 
 button:focus, button:active {
 	outline-style: none;
-    box-shadow: 0px 0px 0px 3px alpha(#81a1c1, 0.5);
 }
 
-#lock {
-    background-image: image(url("/home/gero/.config/wlogout/res/lock_81a1c1.png"), url("/home/gero/.config/wlogout/res/lock_81a1c1.png"));
-    color: red;
+
+/* #lock {
+    background-image: image(url("/home/gero/.config/wlogout/res/lock_ass.png"), url("/home/gero/.config/wlogout/res/lock_ass.png"));
 }
 
 #shutdown {
-    background-image: image(url("/home/gero/.config/wlogout/res/shutdown_81a1c1.png"), url("/home/gero/.config/wlogout/res/shutdown_81a1c1.png"));
+    background-image: image(url("/home/gero/.config/wlogout/res/shutdown_ass.png"), url("/home/gero/.config/wlogout/res/shutdown_ass.png"));
+    background-color: transparent;
 }
 
 #reboot {
-    background-image: image(url("/home/gero/.config/wlogout/res/reboot_81a1c1.png"), url("/home/gero/.config/wlogout/res/reboot_81a1c1.png"));
-}
+    background-image: image(url("/home/gero/.config/wlogout/res/reboot_ass.png"), url("/home/gero/.config/wlogout/res/reboot_ass.png"));
+} */
