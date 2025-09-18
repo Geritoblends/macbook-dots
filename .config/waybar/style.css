@@ -1,22 +1,22 @@
-@define-color base00 #2e3440;  /* nord0 */
-@define-color base01 #3b4252;  /* nord1 */
-@define-color base02 #434c5e;  /* nord2 */
-@define-color base03 #4c566a;  /* nord3 */
-@define-color base04 #d8dee9;  /* nord4 */
-@define-color base05 #e5e9f0;  /* nord5 */
-@define-color base06 #eceff4;  /* nord6 */
-@define-color base07 #8fbcbb;  /* nord7 */
+@define-color base00 #191724;  /* surface */
+@define-color base01 #1f1d2e;  /* base */
+@define-color base02 #26233a;  /* overlay */
+@define-color base03 #6e6a86;  /* muted */
+@define-color base04 #908caa;  /* subtle */
+@define-color base05 #e0def4;  /* text */
+@define-color base06 #f0f0f3;  /* love/fallback light */
+@define-color base07 #9ccfd8;  /* foam */
 
-@define-color red       #bf616a;  /* nord11 */
-@define-color peach     #d08770;  /* nord12 */
-@define-color yellow    #ebcb8b;  /* nord13 */
-@define-color green     #a3be8c;  /* nord14 */
-@define-color teal      #88c0d0;  /* nord9 */
-@define-color blue      #81a1c1;  /* nord10 */
-@define-color mauve     #b48ead;  /* nord15 */
-@define-color flamingo  #5e81ac;  /* nord8 */
+@define-color red       #eb6f92;  /* love */
+@define-color peach     #ea9a97;  /* rose */
+@define-color yellow    #f6c177;  /* gold */
+@define-color green     #9ccfd8;  /* pine */
+@define-color teal      #9ccfd8;  /* foam */
+@define-color blue      #c4a7e7;  /* iris */
+@define-color mauve     #bb9af7;  /* highlight (approx violet) */
+@define-color flamingo  #ebbcba;  /* highlight (rosewater) */
 
-@define-color fg        @base04;
+@define-color fg        @base05;
 @define-color bg        @base00;
 @define-color accent    @blue;
 
@@ -33,7 +33,7 @@
 }
 
 .modules-left, .modules-center, .modules-right {
-    background-color: alpha(#141419, 1); /* base00 with opacity */
+    background-color: alpha(@bg, 1); /* base00 with opacity */
     border-radius: 0px 0px 10px 10px;
     margin-top: 0px;
     margin-bottom: 3px;
@@ -56,7 +56,7 @@
 
 tooltip {
     border-radius: 10px;
-    background-color: rgba(24, 24, 37, 0.9); /* base01 with opacity */
+    background-color: rgba(24, 24, 37, 1); /* base01 with opacity */
     border: solid 2px @accent;
 }
 
@@ -109,7 +109,7 @@ tooltip {
 }
 
 #tray menu {
-    background-color: rgba(255, 222, 222, 0.7);
+    background-color: rgba(255, 222, 222, 1);
 }
 
 #tray * {

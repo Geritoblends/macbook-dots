@@ -51,7 +51,7 @@
             "tooltip-format-disconnected": "Error",
             "tooltip-format-wifi": "{essid} ({signalStrength}%)",
             "tooltip-format-ethernet": "{ifname} 🖧 ",
-            "on-click": "kitty nmtui"
+            "on-click": "foot nmtui"
         },
         "bluetooth": {
 	    "format": "󰂯",
@@ -81,7 +81,7 @@
             "interval": 30,   
             "exec": "checkupdates | wc -l",
             "exec-if": "exit 0",
-            "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+            "on-click": "foot sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
             "signal": 8,
             "tooltip": false,
         },
@@ -113,11 +113,11 @@
         "cpu": {
             "format": " ",
             "tooltip": true,
-	    "on-click": "kitty auto-cpufreq --stats"
+	    "on-click": "foot auto-cpufreq --stats"
         },
         "memory": {
             "format": " ",
-	    "on-click": "kitty btm"
+	    "on-click": "foot btm"
         },
         "temperature": {
             "critical-threshold": 80,
@@ -170,7 +170,7 @@
     "custom/system_info": {
         "format": "󰘚 ",
         "tooltip": false,
-        "on-click": "kitty --title system_info -- bash -c \"fastfetch; read -p 'Press Enter to close...'\""
+        "on-click": "foot --title system_info -- bash -c \"fastfetch; read -p 'Press Enter to close...'\""
     },
     "custom/cava": {
         "format": "{}",
