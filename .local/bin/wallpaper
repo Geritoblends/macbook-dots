@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Directory containing wallpapers
+WALLPAPER_DIR="$HOME/Imágenes/Wallpapers/rosepine"
+HYPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
+HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
+
+while true; do
+    # List files in the wallpaper directory and send them to wofi
+    SELECTED=$(ls "$WALLPAPER_DIR"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | xargs -n 1 basename | wofi --dmenu --prompt "" -W 600 -H 400)
+
+    if [ -n "$SELECTED" ]; then
+        # Full path to the selected wallpaper
+        WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED"
+        
+        # 1. Update hyprpaper (live wallpaper)
+        swww img "$WALLPAPER_PATH" --transition-step 110 --transition-type center --transition-fps 30
+        
+        # 2. Update hyprpaper config (for persistence)
+        sed -i "s|^preload = .*|preload = $WALLPAPER_PATH|" "$HYPAPER_CONFIG"
+        sed -i "s|^wallpaper = .*|wallpaper = ,$WALLPAPER_PATH|" "$HYPAPER_CONFIG"
+        
+        # 3. Update hyprlock config (lock screen wallpaper)
+        sed -i "s|^\$wallpaper = .*|\$wallpaper = $WALLPAPER_PATH|" "$HYPRLOCK_CONFIG"
+
+        break
+        
+    else
+        break
+    fi
+done

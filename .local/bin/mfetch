@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+    echo "Usage: mfetch \"Song Title - Artist Name\" ..."
+    exit 1
+fi
+
+music_dir="$HOME/Music"
+
+for query in "$@"; do
+    filename="${query}.mp3"
+
+    echo " Downloading: ${query}..."
+
+    # Download the audio
+    yt-dlp "ytsearch1:${query}" \
+        --quiet \
+        --no-warnings \
+        --extract-audio \
+        --audio-format mp3 \
+        --output "${music_dir}/${filename}" \
+        --no-playlist
+
+    # Extract title and artist from the input
+    title=$(echo "$query" | cut -d '-' -f1 | xargs)
+    artist=$(echo "$query" | cut -d '-' -f2- | xargs)
+
+    # Set ID3 tags
+    eyeD3 --title="$title" --artist="$artist" "${music_dir}/${filename}" > /dev/null
+
+    notify-send "✅ Download complete" "'${filename}' saved to Music and tagged."
+done

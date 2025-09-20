@@ -1,0 +1,33 @@
+#!/bin/bash
+
+STATE_FILE="/tmp/pomodoro_state.json"
+
+# Prompt via wofi
+INPUT=$(echo -e "25+5\n30+10\n50+10\nCustom" | wofi --dmenu --prompt "Pomodoro (Work+Break min):")
+[[ -z "$INPUT" ]] && exit 1
+
+if [[ "$INPUT" == "Custom" ]]; then
+    WORK=$(wofi --dmenu --prompt "Work duration (min):")
+    BREAK=$(wofi --dmenu --prompt "Break duration (min):")
+else
+    WORK=$(echo "$INPUT" | cut -d+ -f1)
+    BREAK=$(echo "$INPUT" | cut -d+ -f2)
+fi
+
+ROUNDS=$(wofi --dmenu --prompt "Rounds (default 4):")
+[[ -z "$ROUNDS" ]] && ROUNDS=4
+
+# Convert to seconds
+WORK_SEC=$((WORK * 60))
+BREAK_SEC=$((BREAK * 60))
+NOW=$(date +%s)
+
+# Write state
+cat > "$STATE_FILE" <<EOF
+{
+  "start_time": $NOW,
+  "work_duration": $WORK_SEC,
+  "break_duration": $BREAK_SEC,
+  "rounds": $ROUNDS
+}
+EOF
