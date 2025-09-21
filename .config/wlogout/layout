@@ -14,6 +14,27 @@
 }
 
 {
+    "label" : "lock",
+    "action" : "hyprlock",
+    "text" : " lock",
+    "keybind" : "l"
+}
+
+{
+    "label" : "wallpaper",
+    "action" : "/home/gero/.local/bin/wallpaper",
+    "text" : " wallpaper",
+    "keybind": "w"
+}
+
+{
+    "label" : "exit",
+    "action" : "niri msg action quit",
+    "text" : "󰍃 exit",
+    "keybind": "e"
+}
+
+{
     "label" : "reboot",
     "action" : "systemctl reboot",
     "text" : "󰑓 reboot",

@@ -89,7 +89,8 @@ input {
 }
 
 cursor {
-    xcursor-theme "Bibata-RosePine"
+    // xcursor-theme "Bibata-RosePine"
+    xcursor-theme "Adwaita"
     xcursor-size 24
 
     hide-when-typing
@@ -110,6 +111,8 @@ overview {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 16
+
+
     background-color "transparent"
 
     // When to center a column when changing focus, options are:
@@ -163,7 +166,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 0
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -201,7 +204,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 3
+        width 0
         active-color "#c4a7e7"
         inactive-color "#191724"
 
@@ -259,7 +262,7 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
+        left 0
         // right 64
         // top 64
         // bottom 64
@@ -279,6 +282,8 @@ spawn-at-startup "hypridle"
 spawn-at-startup "kidex"
 spawn-at-startup "/home/gero/.local/bin/battery_advice"
 spawn-at-startup "mpd"
+spawn-at-startup "waybar"
+spawn-at-startup "/home/gero/.config/ags/bar_corners.tsx"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -298,7 +303,7 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Imágenes/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -372,12 +377,12 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"Thunar$"#
+    match app-id=r#"nautilus$"#
     open-floating true
 }
 
 window-rule {
-    match app-id=r#"thunar$"#
+    match app-id=r#"Nautilus$"#
     open-floating true
 }
 
@@ -396,7 +401,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 14
     clip-to-geometry true
 }
 
@@ -418,7 +423,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q { spawn "foot"; }
     Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "anyrun"; }
-    Mod+E { spawn "thunar"; }
+    Mod+E { spawn "nautilus"; }
     Mod+T { spawn "brave"; }
     Super+Shift+I { spawn "wlogout"; }
 

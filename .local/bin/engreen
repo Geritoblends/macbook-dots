@@ -1,0 +1,16 @@
+#!/bin/bash
+# Usage: ./degreener.sh input.png output.png
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 input_file output_file"
+    exit 1
+fi
+
+input="$1"
+output="$2"
+
+# Apply inverse color adjustments
+magick "$input" \
+    -channel R -evaluate Multiply 0.9 +channel \
+    -channel G -evaluate Multiply 1.1 +channel \
+    -channel B -evaluate Multiply 0.9 +channel \
+    "$output"

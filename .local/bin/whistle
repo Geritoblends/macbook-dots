@@ -1,0 +1,8 @@
+#!/bin/bash
+SCRIPT_DIR=~/scripts/python
+SCRIPT_PATH="$SCRIPT_DIR/src/python/whistle.py"
+
+export PYTHONPATH=/usr/lib/python3.13/site-packages:$PYTHONPATH
+
+# Pass all arguments to Python via Poetry
+(cd "$SCRIPT_DIR" && poetry run python "$SCRIPT_PATH" "$@")

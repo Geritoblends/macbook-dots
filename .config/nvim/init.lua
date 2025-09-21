@@ -172,35 +172,104 @@ require("lazy").setup({
         end,
     },
 
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-    },
-
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
-        },
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pyright" },
-                automatic_installation = true,
-            })
-
-            -- Basic LSP setup
-            local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup {}
-            lspconfig.pyright.setup {}
-            -- LSP keybindings
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-        end,
-    },
+    -- {
+    --     "williamboman/mason-lspconfig.nvim",
+    --     dependencies = {
+    --         "williamboman/mason.nvim",
+    --     },
+    --     config = function()
+    --         require("mason").setup({
+    --             ui = {
+    --                 icons = {
+    --                     package_installed = "✓",
+    --                     package_pending = "➜",
+    --                     package_uninstalled = "✗",
+    --                 },
+    --             },
+    --         })
+    --
+    --         require("mason-lspconfig").setup({
+    --             ensure_installed = { "lua_ls", "pyright", "rust_analyzer" },
+    --             automatic_installation = true,
+    --         })
+    --
+    --         local on_attach = function(client, bufnr)
+    --             local opts = { noremap = true, silent = true, buffer = bufnr }
+    --             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    --             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    --             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+    --             vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    --             vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    --             vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    --             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    --             vim.keymap.set("n", "<leader>f", function()
+    --                 vim.lsp.buf.format { async = true }
+    --             end, opts)
+    --         end
+    --
+    --         -- lua_ls
+    --         vim.lsp.config.lua_ls = {
+    --             cmd = { "lua-language-server" },
+    --             root_markers = {
+    --                 ".luarc.json",
+    --                 ".luarc.jsonc",
+    --                 ".luacheckrc",
+    --                 ".stylua.toml",
+    --                 "stylua.toml",
+    --                 "selene.toml",
+    --                 "selene.yml",
+    --             },
+    --             on_attach = on_attach,
+    --             settings = {
+    --                 Lua = {
+    --                     runtime = { version = "LuaJIT" },
+    --                     diagnostics = { globals = { "vim" } },
+    --                     workspace = {
+    --                         library = vim.api.nvim_get_runtime_file("", true),
+    --                         checkThirdParty = false,
+    --                     },
+    --                     telemetry = { enable = false },
+    --                 },
+    --             },
+    --         }
+    --
+    --         -- pyright
+    --         vim.lsp.config.pyright = {
+    --             cmd = { "pyright-langserver", "--stdio" },
+    --             root_markers = {
+    --                 "pyproject.toml",
+    --                 "setup.py",
+    --                 "setup.cfg",
+    --                 "requirements.txt",
+    --                 "Pipfile",
+    --                 "pyrightconfig.json",
+    --             },
+    --             on_attach = on_attach,
+    --             settings = {
+    --                 python = {
+    --                     analysis = {
+    --                         typeCheckingMode = "basic",
+    --                         autoSearchPaths = true,
+    --                         useLibraryCodeForTypes = true,
+    --                     },
+    --                 },
+    --             },
+    --         }
+    --
+    --         -- rust_analyzer
+    --         vim.lsp.config.rust_analyzer = {
+    --             cmd = { "rust-analyzer" },
+    --             on_attach = on_attach,
+    --             settings = {
+    --                 ["rust-analyzer"] = {
+    --                     cargo = { allFeatures = true },
+    --                     checkOnSave = { command = "clippy" },
+    --                     procMacro = { enable = true },
+    --                 },
+    --             },
+    --         }
+    --     end,
+    -- },
 
     {
         'windwp/nvim-ts-autotag',
@@ -217,11 +286,15 @@ require("lazy").setup({
                 typescriptreact = { "prettier" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
+                sh = {},
+                rust = { "rustfmt" },
             },
-            format_on_save = {
-                lsp_fallback = true,
-                timeout_ms = 500,
-            },
+            format_on_save = function(bufnr)
+                if vim.bo[bufnr].filetype == "sh" then
+                    return -- skip formatting completely for shell scripts
+                end
+                return { lsp_fallback = true, timeout_ms = 500 }
+            end,
         },
     },
     -- {

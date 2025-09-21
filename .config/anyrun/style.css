@@ -1,54 +1,76 @@
-entry {
-    border-radius: 10px 10px 0px 0px;
-    min-height: 40px;
-    background-color: alpha(#191724, 1);  /* nord1 with 50% opacity */
-    color: #d8dee9;  /* nord4 */
-    border: solid 3px #c4a7e7;  /* nord15 (purple accent) */
-    border-bottom: none;
-    font-size: 22px;
-    box-shadow: 0px 0px 0px 3px #191724;
-} 
-
-entry:focus {
-    outline: none;
+* {
+    color: #e0def4;
+    font-family: Inter, JetBrains Mono NF;
 }
 
 window {
-    background-color: transparent;
+  background: transparent;
 }
 
-list {
-    border-radius: 0px 0px 10px 10px;
-    background-color: alpha(#191724, 1);  /* nord1 with 50% opacity */
-    min-height: 20px;
-    border: solid 3px #c4a7e7;  /* nord15 (purple accent) */
-    border-top: none;
-    margin-bottom: 6px;
-    box-shadow: 0px 3px 0px 3px #191724;
+box.main {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid #c4a7e7;
+    outline: 4px solid #191724;
+    background-color: #191724;
+    box-shadow: 0 0 5px black;
+    font-weight: 700;
+    font-size: 24px;
 }
 
-list list {
-    box-shadow: none;
-    border-radius: 0px;
-    background-color: transparent;
-    border: none;
+
+text {
+  min-height: 30px;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-#match {
-    background-color: transparent;
-    padding: 2px;
-    margin: 0px 6px 0px 6px;
-    border-radius: 8px;
+.matches {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: normal;
 }
 
-#match:selected {
-    background-color: rgba(180, 142, 173, 0.25);  /* nord15 with 25% opacity */
+box.plugin:first-child {
+  margin-top: 5px;
 }
 
-#plugin label, #plugin image {
-    color: #d8dee9;  /* nord4 */
+box.plugin.info {
+  min-width: 200px;
 }
 
-#plugin image {
-    margin-left: 10px;
+list.plugin {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+label.match.description {
+    font-size: 12px;
+    color: alpha(#e0def4, 0.8);
+    
+}
+
+label.plugin.info {
+  font-size: 24px;
+}
+
+.match {
+  background: transparent;
+}
+
+.match:selected {
+  border-left: 4px solid #c4a7e7;
+  background: transparent;
+  animation: fade 0.1s linear;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

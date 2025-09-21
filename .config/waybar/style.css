@@ -21,33 +21,36 @@
 @define-color accent    @blue;
 
 * {
-    font-family: "Inter", "JetBrains Mono NF";
+    font-family: "JetBrains Mono NF";
     font-size: 15px;
     font-weight: 600;
-    color: @fg;
+    color: @blue;
     text-shadow: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
 }
 
 #waybar {
-    background-color: transparent;
+    background-color: alpha(@bg, 1);
 }
 
 .modules-left, .modules-center, .modules-right {
-    background-color: alpha(@bg, 1); /* base00 with opacity */
-    border-radius: 0px 0px 10px 10px;
+    background-color: transparent; /* base00 with opacity */
+    border-radius: 0px 0px 0px 0px;
     margin-top: 0px;
-    margin-bottom: 3px;
     box-shadow: none;
     transition: all .4s ease;
 }
 
 .modules-left {
-    margin-left: 10px;
+    margin-top: 10px;
     background-color: transparent;
+
 }
 
 .modules-right {
-    margin-right: 10px;
+    margin-bottom: 15px;
 }
 
 .modules-center {
@@ -63,20 +66,21 @@ tooltip {
 #custom-apple {
     margin-left: 5px;
     font-size: 20px;
-    color: @fg;
+    color: @blue;
+    padding: 0px 0px;
 }
 
 #workspaces {
-    margin: 0 3px 0px 3px;
+    margin: 0 5px 0px 0px;
     background-color: transparent;
-    border-radius: 0px 0px 15px 15px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 #workspaces button {
     font-size: 5px;
     border-radius: 8px;
     padding: 0px;
-    padding-right: 4px;
+    padding-right: 0px;
     background-image: none;
     transition: all .4s ease;
 }
@@ -89,7 +93,7 @@ tooltip {
 }
 
 #workspaces button.empty * {
-    color: alpha(@fg, 0.2);
+    color: alpha(@blue, 0.2);
 }
 
 #workspaces button.active * {
@@ -97,14 +101,12 @@ tooltip {
 }
 
 #workspaces button:hover * {
-    color: @peach;
-}
-
-#workspaces button:hover {
+    color: @blue;
 }
 
 #tray {
     margin: 0px 2px;
+    margin-top: 4px;
     border-radius: 0px;
 }
 
@@ -113,8 +115,7 @@ tooltip {
 }
 
 #tray * {
-    padding: 0 6px;
-    color: @peach;
+    padding: 0 0px;
 }
 
 #mode,
@@ -127,8 +128,8 @@ tooltip {
 #pulseaudio,
 #backlight,
 #clock {
-    margin: 0px 2px;
-    padding: 0px 6px;
+    margin: 10px 0px;
+    padding: 0px 5px;
     border-radius: 20px;
     background-color: transparent;
 }
@@ -136,10 +137,11 @@ tooltip {
 #clock {
     margin-left: 5px;
     margin-right: 5px;
+    color: #ebbcba;
 }
 
-#cpu, #memory, #bluetooth, #network, #custom-spotlight {
-    color: @blue;
+#cpu, #memory, #bluetooth, #network, #custom-spotlight, #temperature {
+    color: @fg;
     transition: all .4s ease;
 }
 
@@ -157,7 +159,7 @@ tooltip {
 }
 
 #battery {
-    padding: 0px 5px;
+    padding: 0px 0px;
     transition: all .3s ease;
     color: @fg;
 }
@@ -189,3 +191,27 @@ tooltip {
 #custom-cava {
     margin: 0px 10px;
 }
+
+#mpd {
+    color: @fg;
+    margin-top: 5px;
+        font-size: 0px;
+}
+
+#cpu {
+    color: @green;
+}
+
+#memory {
+    color: @yellow;
+}
+
+#network {
+    color: @red;
+}
+
+#temperature {
+    color: @blue;
+}
+
+

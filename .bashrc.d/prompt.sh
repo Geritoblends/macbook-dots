@@ -55,7 +55,7 @@ alias grep='grep --color=auto'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
-if [ -z "$SSH_AGENT_PID" ] || ! ps -p $SSH_AGENT_PID > /dev/null; then
-eval "$(ssh-agent -s)" > /dev/null
-fi
+# if [ -z "$SSH_AGENT_PID" ] || ! ps -p $SSH_AGENT_PID > /dev/null; then
+# eval "$(ssh-agent -s)" > /dev/null
+# fi
 

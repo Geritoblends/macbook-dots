@@ -3,10 +3,10 @@
 # Exit on error
 set -e
 
-DOTS_DIR="$HOME/dots"
+DOTS_DIR="$HOME/macbook-dots"
 CONFIG_DIR="$DOTS_DIR/.config"
 
-mkdir -p "$CONFIG_DIR/hypr" "$CONFIG_DIR/wlogout/res" "$CONFIG_DIR/waybar" "$CONFIG_DIR/anyrun" "$CONFIG_DIR/nvim" "$CONFIG_DIR/dunst" "$CONFIG_DIR/fastfetch" "$CONFIG_DIR/kitty" "$CONFIG_DIR/mpd" "$CONFIG_DIR/ncmpcpp" "$CONFIG_DIR/mpv" "$DOTS_DIR/.local/bin" "$CONFIG_DIR/wofi" "$CONFIG_DIR/foot" "$CONFIG_DIR/niri" "$DOTS_DIR/.bashrc.d"
+mkdir -p "$CONFIG_DIR/hypr" "$CONFIG_DIR/wlogout/res" "$CONFIG_DIR/waybar" "$CONFIG_DIR/anyrun" "$CONFIG_DIR/nvim" "$CONFIG_DIR/dunst" "$CONFIG_DIR/fastfetch" "$CONFIG_DIR/kitty" "$CONFIG_DIR/mpd" "$CONFIG_DIR/ncmpcpp" "$CONFIG_DIR/mpv" "$DOTS_DIR/.local/bin" "$CONFIG_DIR/wofi" "$CONFIG_DIR/foot" "$CONFIG_DIR/niri" "$DOTS_DIR/.bashrc.d" "$CONFIG_DIR/gtk-3.0" "$CONFIG_DIR/gtk-4.0" "$CONFIG_DIR/ags"
 
 # Copy files
 # Hyprland & Hyprlock
@@ -53,21 +53,21 @@ cp -f "$HOME/.config/ncmpcpp/bindings" "$CONFIG_DIR/ncmpcpp/bindings"
 cp -f "$HOME/.bashrc" "$DOTS_DIR/"
 cp -rf "$HOME/.bashrc.d/"* "$DOTS_DIR/.bashrc.d/"
 
-# Zshrc
-cp -f "$HOME/.zshrc" "$DOTS_DIR/"
-
-# Starship.toml
-cp -f "$HOME/.config/starship.toml" "$CONFIG_DIR/starship.toml"
-
 # .local/bin
 cp -rf "$HOME/.local/bin/"* "$DOTS_DIR/.local/bin/"
 
 # niri
-cp -rf "$HOME/.config/niri/"* "$CONFIG_DIR/niri"
+cp -rf "$HOME/.config/niri/"* "$CONFIG_DIR/niri/"
 
 # deps
 cp -f "$HOME/deps.md" "$DOTS_DIR/deps.md"
 
+# gtk
+cp -rf "$HOME/.config/gtk-3.0/"* "$CONFIG_DIR/gtk-3.0/"
+cp -rf "$HOME/.config/gtk-4.0/"* "$CONFIG_DIR/gtk-4.0/"
+
+# ags
+cp -rf "$HOME/.config/ags/"* "$CONFIG_DIR/ags/"
 
 # Git stage, commit, and push
 git -C "$DOTS_DIR" add .

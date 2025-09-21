@@ -148,3 +148,4 @@ yazi 25.5.31-2
 yt-dlp 2025.08.27-1
 zen-browser-bin 1.13b-1
 zram-generator 1.2.1-1
+aylurs-gtk-shell-git 2.3.0.r89.gc8d2b56-1

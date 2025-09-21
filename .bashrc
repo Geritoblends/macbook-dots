@@ -5,3 +5,4 @@ if [ -d "$HOME/.bashrc.d" ]; then
         [ -r "$file" ] && source "$file"
     done
 fi
+
