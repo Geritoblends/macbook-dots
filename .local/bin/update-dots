@@ -30,11 +30,11 @@ cp -rf "$HOME/.config/foot/"* "$CONFIG_DIR/foot/"
 cp -rf "$HOME/.config/waybar/"* "$CONFIG_DIR/waybar/"
 
 # Neovim
-cp -f "$HOME/.config/nvim/init.lua" "$CONFIG_DIR/nvim/"
+cp -f "$HOME/.config/nvim/"*.lua "$CONFIG_DIR/nvim/"
 cp -rf "$HOME/.config/nvim/lua/"* "$CONFIG_DIR/nvim/lua/"
 
 # Dunst
-cp -f "$HOME/.config/dunst/dunstrc" "$CONFIG_DIR/dunst/dunstrc"
+cp -rf "$HOME/.config/dunst/"* "$CONFIG_DIR/dunst/"
 
 # fastfetch
 cp -rf "$HOME/.config/fastfetch/"* "$CONFIG_DIR/fastfetch/"
