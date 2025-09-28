@@ -1,0 +1,91 @@
+/* Rose Pine theme for wofi */
+/* Save as ~/.config/wofi/style.css */
+
+* {
+    font-family: "JetBrains Mono NF";
+    font-size: 14px;
+}
+
+/* Main window */
+window {
+    margin: 0px;
+    border: 2px solid #524f67;
+    background-color: #191724;
+    border-radius: 12px;
+}
+
+#input {
+    margin: 8px;
+    padding: 8px 12px;
+    border: none;
+    color: #e0def4;
+    background-color: #26233a;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#input:focus {
+    border: 2px solid #c4a7e7;
+    outline: none;
+}
+
+#inner-box {
+    margin: 8px;
+    border: none;
+    background-color: #191724;
+    border-radius: 8px;
+}
+
+#outer-box {
+    margin: 8px;
+    border: none;
+    background-color: #191724;
+    border-radius: 8px;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 8px;
+    border: none;
+    color: #e0def4;
+}
+
+#entry {
+    padding: 8px 12px;
+    margin: 2px 0px;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #e0def4;
+}
+
+#entry:selected {
+    background-color: #403d52;
+    color: #c4a7e7;
+    border: 1px solid #524f67;
+}
+
+#entry:hover {
+    background-color: #26233a;
+    color: #f6c177;
+}
+
+/* Alternative darker variant */
+/*
+window {
+    background-color: #16141f;
+    border: 2px solid #403d52;
+}
+
+#input {
+    background-color: #1f1d2e;
+}
+
+#inner-box, #outer-box {
+    background-color: #16141f;
+}
+*/

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+NVIM_DIR="$HOME/.config/nvim"
+INIT="$NVIM_DIR/init.lua"
+NEUMORPH="$NVIM_DIR/neumorph_init.lua"
+BASE="$NVIM_DIR/base_init.lua"
+
+if [ -f "$NEUMORPH" ]; then
+    # Neumorph config exists → switch to it
+    mv "$INIT" "$BASE"
+    mv "$NEUMORPH" "$INIT"
+    echo "Switched to Neumorph init.lua"
+else
+    # Otherwise → switch back to base
+    mv "$INIT" "$NEUMORPH"
+    mv "$BASE" "$INIT"
+    echo "Switched to Base init.lua"
+fi

@@ -152,7 +152,7 @@
 	    "icon-blacklist": ["blueman", "blueman-applet"]
         },
 	"custom/apple": {
-		"format":"󰣇 ",
+		"format":"",
 		"tooltip": true,
 		"on-click": "wlogout",
 	},

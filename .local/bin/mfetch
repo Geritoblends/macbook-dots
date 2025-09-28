@@ -14,6 +14,7 @@ for query in "$@"; do
 
     # Download the audio
     yt-dlp "ytsearch1:${query}" \
+        --ffmpeg-location "$(which ffmpeg)" \
         --quiet \
         --no-warnings \
         --extract-audio \
@@ -30,3 +31,4 @@ for query in "$@"; do
 
     notify-send "✅ Download complete" "'${filename}' saved to Music and tagged."
 done
+

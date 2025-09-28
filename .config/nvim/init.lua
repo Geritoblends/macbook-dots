@@ -371,8 +371,24 @@ require("lazy").setup({
             "MunifTanjim/nui.nvim",
         },
     },
+    {
+        "e-ink-colorscheme/e-ink.nvim",
+        priority = 1000,
+        config = function ()
+            require("e-ink").setup()
+            vim.cmd.colorscheme "e-ink"
 
+            -- choose light mode or dark mode
+            vim.opt.background = "dark"
+            -- vim.opt.background = "light"
+            --
+            -- or do
+            -- :set background=dark
+            -- :set background=light
+        end
+    },
 })
+
 -- Basic keymaps
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
@@ -425,4 +441,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
 })
 
-require("colors.rosepine").setup()
+-- require("colors.rosepine").setup()

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory containing wallpapers
-WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Rose-Pine"
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers/e-ink"
 HYPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 

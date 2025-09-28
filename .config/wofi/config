@@ -1,8 +1,29 @@
-width=700
-show=drun
-prompt=Search
-insensitive=true
-allow_markup=true
-term=kitty
+# Rose Pine wofi config
+# Save as ~/.config/wofi/config
+
+# Window settings
+width=500
+height=400
 location=center
+show=drun
+prompt=Launch
+filter_rate=100
+allow_markup=true
 no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+insensitive=true
+allow_images=true
+image_size=24
+gtk_dark=true
+
+# Performance
+cache_file=/home/$USER/.cache/wofi-drun
+parse_search=true
+matching=fuzzy
+
+# Style
+css_file=/home/$USER/.config/wofi/style.css
+hide_scroll=true
+dynamic_lines=false

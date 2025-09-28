@@ -8,7 +8,7 @@ toggle_pad() {
     fi
 }
 
-fix_internet() {
+reload_wifi() {
     sudo rmmod wl;
     sudo modprobe wl;
 }
@@ -54,3 +54,21 @@ cdf() {
   dir=$(find . -type d 2>/dev/null | fzf) && cd "$dir"
 }
 
+rmf() {
+  local file
+  file=$(find . -maxdepth 1 -type f 2>/dev/null | fzf) && rm -i "$file"
+}
+
+zip_current() {
+    # Get the name of the current folder
+    local folder_name
+    folder_name=$(basename "$PWD")
+
+    # Set the output zip path
+    local output="../${folder_name}.zip"
+
+    # Zip the current folder into the output path
+    zip -r "$output" .
+
+    echo "Zipped '$folder_name' to '$output'"
+}
