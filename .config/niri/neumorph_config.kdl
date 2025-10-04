@@ -89,8 +89,8 @@ input {
 }
 
 cursor {
-    // xcursor-theme "Bibata-RosePine"
-    xcursor-theme "Adwaita"
+    xcursor-theme "Bibata-e-ink"
+    // xcursor-theme "Adwaita"
     xcursor-size 24
 
     hide-when-typing
@@ -110,7 +110,7 @@ overview {
 
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 8
 
 
     background-color "transparent"
@@ -145,7 +145,7 @@ layout {
     }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.66667; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
@@ -166,7 +166,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 4
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -174,13 +174,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#26233a"
+        active-color "#333333"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#191724"
+        inactive-color "#cccccc00"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -204,9 +204,10 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 1
-        active-color "#191714"
-        inactive-color "#191724"
+        width 2
+        // active-gradient from="#dfdfdf" to="#cccccc" angle=135 relative-to="workspace-view"
+        active-color "#b8b8b8"
+        inactive-color "#cccccc"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -222,7 +223,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        on
+        // on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -244,16 +245,16 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 14
 
         // Spread expands the shadow.
-        spread 5
+        spread 3
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=0 y=6
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#9a9a9a"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -262,10 +263,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        left 0
-        // right 64
-        // top 64
-        // bottom 64
+        left 2
+        right 2
+        top 2
+        bottom 2
     }
 }
 
@@ -283,7 +284,7 @@ spawn-at-startup "kidex"
 spawn-at-startup "/home/gero/.local/bin/battery_advice"
 spawn-at-startup "mpd"
 spawn-at-startup "waybar"
-spawn-at-startup "/home/gero/.config/ags/bar_corners.tsx"
+spawn-at-startup "/home/gero/.config/ags/neumorph_bar_corners.tsx"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -325,6 +326,18 @@ animations {
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
+
+window-rule {
+    match app-id="Waydroid"
+    open-maximized true
+}
+
+window-rule {
+    match is-focused=false
+    shadow {
+        off
+    }
+}
 
 window-rule {
     // This regular expression is intentionally made as specific as possible,

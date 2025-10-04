@@ -8,7 +8,7 @@ toggle_pad() {
     fi
 }
 
-reload_wifi() {
+reload-wifi() {
     sudo rmmod wl;
     sudo modprobe wl;
 }

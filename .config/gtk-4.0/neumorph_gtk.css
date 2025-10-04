@@ -1,9 +1,9 @@
-@define-color theme_bg_color #191724;
-@define-color theme_fg_color #e0def4;
+@define-color theme_bg_color #333333;
+@define-color theme_fg_color #cccccc;
 
 :root {
-    --bg-primary: #191724;
-    --fg-primary: #e0def4;
+    --bg-primary: #333333;
+    --fg-primary: #cccccc;
 }
 
 window {
@@ -23,8 +23,8 @@ menu,
 toolbar,
 headerbar,
 sidebar {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 popover, dialog {
@@ -33,32 +33,32 @@ popover, dialog {
 
 /* Common GTK widgets */
 .background {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 .view {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 listbox,
 .listbox {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 listbox row,
 .listbox row {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 /* Handle row selection states */
 listbox row:selected,
 .listbox row:selected {
     background-color: #9ccfd8; /* Rose Pine foam */
-    color: #191724;
+    color: #333333;
 }
 
 listbox row:hover,
@@ -67,14 +67,14 @@ listbox row:hover,
 }
 
 revealer:backdrop {
-    background-color: #191724;
-    color: #e0def4;
+    background-color: #333333;
+    color: #cccccc;
 }
 
 /* Fix unfocused window state */
 window:backdrop centerbox,
 .background:backdrop centerbox {
-    background-color: #191724; /* Keep same color when unfocused */
+    background-color: #333333; /* Keep same color when unfocused */
     color: #908caa; /* Slightly dimmed text for unfocused state */
 }
 

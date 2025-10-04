@@ -1,20 +1,21 @@
-@define-color base00 #191724;  /* surface */
-@define-color base01 #1f1d2e;  /* base */
-@define-color base02 #26233a;  /* overlay */
-@define-color base03 #6e6a86;  /* muted */
-@define-color base04 #908caa;  /* subtle */
-@define-color base05 #e0def4;  /* text */
-@define-color base06 #f0f0f3;  /* love/fallback light */
-@define-color base07 #9ccfd8;  /* foam */
+/* Grayscale palette */
+@define-color base00 #333333;  /* darkest */
+@define-color base01 #474747;
+@define-color base02 #4A4A4A;
+@define-color base03 #545454;
+@define-color base04 #5E5E5E;
+@define-color base05 #686868;
+@define-color base06 #727272;
+@define-color base07 #7C7C7C;
 
-@define-color red       #eb6f92;  /* love */
-@define-color peach     #ea9a97;  /* rose */
-@define-color yellow    #f6c177;  /* gold */
-@define-color green     #9ccfd8;  /* pine */
-@define-color teal      #9ccfd8;  /* foam */
-@define-color blue      #c4a7e7;  /* iris */
-@define-color mauve     #bb9af7;  /* highlight (approx violet) */
-@define-color flamingo  #ebbcba;  /* highlight (rosewater) */
+@define-color red       #868686;  /* repurpose as "alert gray" */
+@define-color peach     #909090;
+@define-color yellow    #9A9A9A;
+@define-color green     #A4A4A4;
+@define-color teal      #AEAEAE;
+@define-color blue      #B8B8B8;
+@define-color mauve     #C2C2C2;
+@define-color flamingo  #CCCCCC;  /* lightest */
 
 @define-color fg        @base05;
 @define-color bg        @base00;
@@ -59,7 +60,7 @@
 
 tooltip {
     border-radius: 10px;
-    background-color: rgba(24, 24, 37, 1); /* base01 with opacity */
+    background-color: @bg; /* base01 with opacity */
     border: solid 2px @accent;
 }
 
@@ -106,7 +107,7 @@ tooltip {
 
 #tray {
     margin: 0px 2px;
-    margin-top: 4px;
+    margin-top: 10px;
     border-radius: 0px;
 }
 
@@ -137,7 +138,7 @@ tooltip {
 #clock {
     margin-left: 5px;
     margin-right: 5px;
-    color: #ebbcba;
+    color: @flamingo;
 }
 
 #cpu, #memory, #bluetooth, #network, #custom-spotlight, #temperature {

@@ -1,5 +1,5 @@
 * {
-    color: #e0def4;
+    color: #cccccc;
     font-family: Inter, JetBrains Mono NF;
 }
 
@@ -11,9 +11,9 @@ box.main {
     padding: 5px;
     margin: 10px;
     border-radius: 10px;
-    border: 2px solid #c4a7e7;
-    outline: 4px solid #191724;
-    background-color: #191724;
+    border: 4px solid #7c7c7c;
+    outline: 4px solid #333333;
+    background-color: #333333;
     box-shadow: 0 0 5px black;
     font-weight: 700;
     font-size: 24px;
@@ -47,7 +47,7 @@ list.plugin {
 
 label.match.description {
     font-size: 12px;
-    color: alpha(#e0def4, 0.8);
+    color: alpha(#b8b8b8, 0.8);
     
 }
 
@@ -60,7 +60,7 @@ label.plugin.info {
 }
 
 .match:selected {
-  border-left: 4px solid #c4a7e7;
+  border-left: 4px solid #cccccc;
   background: transparent;
   animation: fade 0.1s linear;
 }
