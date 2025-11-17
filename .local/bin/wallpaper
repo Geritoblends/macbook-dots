@@ -1,19 +1,26 @@
 #!/bin/bash
 
 # Directory containing wallpapers
-WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Rose-Pine"
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Gruvbox"
 HYPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 while true; do
-    # List files in the wallpaper directory and send them to wofi
-    SELECTED=$(ls "$WALLPAPER_DIR"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | xargs -n 1 basename | wofi --dmenu --prompt "" -W 600 -H 400)
+    # List files in the wallpaper directory and send them to Fuzzel
+    # ----------------------------------------------------------------------
+    # Fuzzel equivalent:
+    # - --dmenu: Puts Fuzzel in selection mode.
+    # - --prompt="": Removes the prompt text.
+    # - Fuzzel does not support -W (width) or -H (height) in pixels. 
+    #   You can use '-l' for lines (height) and rely on the config for width.
+    # ----------------------------------------------------------------------
+    SELECTED=$(ls "$WALLPAPER_DIR"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | xargs -n 1 basename | fuzzel --dmenu --prompt="" )
 
     if [ -n "$SELECTED" ]; then
         # Full path to the selected wallpaper
         WALLPAPER_PATH="$WALLPAPER_DIR/$SELECTED"
         
-        # 1. Update hyprpaper (live wallpaper)
+        # 1. Update swww (live wallpaper)
         swww img "$WALLPAPER_PATH" --transition-step 110 --transition-type center --transition-fps 30
         
         # 2. Update hyprpaper config (for persistence)
@@ -21,6 +28,7 @@ while true; do
         sed -i "s|^wallpaper = .*|wallpaper = ,$WALLPAPER_PATH|" "$HYPAPER_CONFIG"
         
         # 3. Update hyprlock config (lock screen wallpaper)
+        # Assuming you use a variable definition like '$wallpaper = /path/to/img.jpg' in your hyprlock.conf
         sed -i "s|^\$wallpaper = .*|\$wallpaper = $WALLPAPER_PATH|" "$HYPRLOCK_CONFIG"
 
         break

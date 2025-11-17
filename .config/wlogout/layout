@@ -29,7 +29,7 @@
 
 {
     "label" : "exit",
-    "action" : "niri msg action quit",
+    "action" : "hyprctl dispatch exit",
     "text" : "󰍃 exit",
     "keybind": "e"
 }

@@ -145,7 +145,7 @@ layout {
     }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.0; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
@@ -336,7 +336,7 @@ window-rule {
 
 window-rule {
     match app-id="foot"
-    open-maximized false
+    default-column-width { proportion 0.5; };
 }
 
 window-rule {
@@ -418,6 +418,13 @@ window-rule {
     geometry-corner-radius 14
     clip-to-geometry true
 }
+
+window-rule {
+    match at-startup=true
+    default-column-width { proportion 1.0; }
+}
+
+
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name

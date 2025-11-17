@@ -3,20 +3,20 @@
     width = 300
     padding = 20
     corner_radius = 16
-    frame_width = 2
-    background = "#191724"  
-    foreground = "#e0def4"
-    frame_color = "#c4a7e7"
+    frame_width = 4
+    background = "#202020"  
+    foreground = "#d3869b"
+    frame_color = "#ebdbb2"
     gap_size = 5
 
 [urgency_low]
     timeout = 3
-    frame_color = "#c4a7e7"   
-    foreground = "#e0def4"   
+    frame_color = "#ebdbb2"   
+    foreground = "#d3869b"   
 
 [urgency_normal]
     timeout = 5
-    frame_color = "#c4a7e7" 
+    frame_color = "#ebdbb2" 
 
 [urgency_critical]
     timeout = 15

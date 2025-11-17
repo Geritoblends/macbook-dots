@@ -59,6 +59,11 @@ rmf() {
   file=$(find . -maxdepth 1 -type f 2>/dev/null | fzf) && rm -i "$file"
 }
 
+nvimf() {
+  local file
+  file=$(find . -maxdepth 1 -type f 2>/dev/null | fzf) && nvim "$file"
+}
+
 zip_current() {
     # Get the name of the current folder
     local folder_name
@@ -72,3 +77,6 @@ zip_current() {
 
     echo "Zipped '$folder_name' to '$output'"
 }
+
+cutfile() { mv "$1" ~/.clipboard/; }
+pastefile() { mv ~/.clipboard/"$1" .; }
