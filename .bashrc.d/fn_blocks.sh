@@ -8,7 +8,7 @@ toggle_pad() {
     fi
 }
 
-reload-wifi() {
+reload_wifi() {
     sudo rmmod wl;
     sudo modprobe wl;
 }
@@ -61,7 +61,11 @@ rmf() {
 
 nvimf() {
   local file
-  file=$(find . -maxdepth 1 -type f 2>/dev/null | fzf) && nvim "$file"
+  file=$(fd --hidden --exclude .git --type f | fzf) && nvim "$file"
+}
+
+nvimrg() {
+    nvim $(rg -l "$1")
 }
 
 zip_current() {
@@ -80,3 +84,18 @@ zip_current() {
 
 cutfile() { mv "$1" ~/.clipboard/; }
 pastefile() { mv ~/.clipboard/"$1" .; }
+
+cloud() {
+    # Save current title
+    local old_title=$(printf "\033]0;$(hostnamectl hostname)\007")
+
+    # Set title to "cloud"
+    echo -ne "\033]0;cloud\007"
+
+    # SSH into your cloud machine
+    ssh -p 50021 gero@minecrafsito.hopto.org
+
+    # Restore original title
+    echo -ne "$old_title"
+}
+

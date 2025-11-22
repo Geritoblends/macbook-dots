@@ -54,7 +54,7 @@ local lsp_servers = {
         settings = {
             ["rust-analyzer"] = {
                 cargo = { allFeatures = true },
-                checkOnSave = { command = "clippy" },
+                checkOnSave = true,
                 procMacro = { enable = true },
             },
         },
