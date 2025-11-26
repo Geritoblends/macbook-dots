@@ -6,7 +6,7 @@ set -e
 DOTS_DIR="$HOME/macbook-dots"
 CONFIG_DIR="$DOTS_DIR/.config"
 
-mkdir -p "$CONFIG_DIR/hypr" "$CONFIG_DIR/wlogout/res" "$CONFIG_DIR/waybar" "$CONFIG_DIR/anyrun" "$CONFIG_DIR/nvim" "$CONFIG_DIR/dunst" "$CONFIG_DIR/fastfetch" "$CONFIG_DIR/kitty" "$CONFIG_DIR/mpd" "$CONFIG_DIR/ncmpcpp" "$CONFIG_DIR/mpv" "$DOTS_DIR/.local/bin" "$CONFIG_DIR/wofi" "$CONFIG_DIR/foot" "$CONFIG_DIR/niri" "$DOTS_DIR/.bashrc.d" "$CONFIG_DIR/gtk-3.0" "$CONFIG_DIR/gtk-4.0" "$CONFIG_DIR/ags" "$CONFIG_DIR/fuzzel"
+mkdir -p "$CONFIG_DIR/hypr" "$CONFIG_DIR/wlogout/res" "$CONFIG_DIR/waybar" "$CONFIG_DIR/nvim" "$CONFIG_DIR/dunst" "$CONFIG_DIR/fastfetch" "$CONFIG_DIR/kitty" "$CONFIG_DIR/mpd" "$CONFIG_DIR/ncmpcpp" "$CONFIG_DIR/mpv" "$DOTS_DIR/.local/bin" "$CONFIG_DIR/wofi" "$CONFIG_DIR/foot" "$CONFIG_DIR/niri" "$DOTS_DIR/.bashrc.d" "$CONFIG_DIR/gtk-3.0" "$CONFIG_DIR/gtk-4.0" "$CONFIG_DIR/ags" "$CONFIG_DIR/fuzzel"
 
 # Copy files
 # Hyprland & Hyprlock
@@ -15,10 +15,6 @@ cp -f "$HOME/.config/hypr/"*.conf "$CONFIG_DIR/hypr/"
 # Wlogout
 cp -f "$HOME/.config/wlogout/"{layout,style.css} "$CONFIG_DIR/wlogout/"
 cp -rf "$HOME/.config/wlogout/res/"* "$CONFIG_DIR/wlogout/res/"
-
-# Anyrun
-cp -rf "$HOME/.config/anyrun/"* "$CONFIG_DIR/anyrun/"
-cp -f "$HOME/.config/kidex.ron" "$CONFIG_DIR/kidex.ron"
 
 # Wofi
 cp -rf "$HOME/.config/wofi/"* "$CONFIG_DIR/wofi/"
