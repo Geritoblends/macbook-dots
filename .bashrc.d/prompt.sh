@@ -30,7 +30,7 @@ fi
 ## Build-up what will be the final PS1 string
 set_bash_prompt(){
 PS1="${RESET}"
-PS1+="${BOLD}${COL_USER_HOST}\u @ \h ${RESET}${COL_CURRENT_PATH}\w "
+PS1+="${BOLD}${COL_USER_HOST}\u  \h ${RESET}${COL_CURRENT_PATH}\w "
 
 if [ "$SHOW_GIT" = true ] && [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ] ; then
 PS1+="$(parse_git_changes)"

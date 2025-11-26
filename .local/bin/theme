@@ -1,0 +1,113 @@
+#!/bin/bash
+
+# Usage: theme <colorscheme> [layout]
+# Example: theme nord minimal
+# Example: theme gruvbox (defaults to 'default.css' or 'blocky.css')
+
+COLOR_THEME="$1"
+LAYOUT_STYLE="$2"
+
+# Paths
+SCHEME_DIR="$HOME/.config/wal/colorschemes"
+WAYBAR_THEMES_DIR="$HOME/.config/waybar/themes"
+WAYBAR_CONFIG="$HOME/.config/waybar/style.css"
+CACHE_DIR="$HOME/.cache/wal"
+
+# Ensure cache dir exists
+mkdir -p "$CACHE_DIR"
+
+# ---------------------------------------------------------
+# 1. HELP / LISTING
+# ---------------------------------------------------------
+if [ -z "$COLOR_THEME" ]; then
+    echo "🎨 Available Colors:"
+    ls "$SCHEME_DIR" | sed 's/.json//' | tr '\n' ' '
+    echo -e "\n\n📐 Available Layouts:"
+    ls "$WAYBAR_THEMES_DIR" | sed 's/.css//' | grep -v "style.css" | tr '\n' ' '
+    echo ""
+    exit 1
+fi
+
+# ---------------------------------------------------------
+# 2. APPLY COLORS (WAL)
+# ---------------------------------------------------------
+COLOR_FILE="$SCHEME_DIR/$COLOR_THEME.json"
+
+if [ ! -f "$COLOR_FILE" ]; then
+    echo "❌ Error: Color scheme '$COLOR_THEME' not found."
+    exit 1
+fi
+
+# [IMPORTANT] Save the current theme path so 'edit-theme' knows what to open
+echo "$COLOR_FILE" > "$CACHE_DIR/current_theme_path"
+
+# Generate the colors
+wal -f "$COLOR_FILE" > /dev/null
+echo "🎨 Colors set to: $COLOR_THEME"
+
+# ---------------------------------------------------------
+# 3. APPLY WAYBAR LAYOUT
+# ---------------------------------------------------------
+TARGET_LAYOUT=""
+
+# Case A: User specified a layout explicitly (e.g. 'theme nord minimal')
+if [ -n "$LAYOUT_STYLE" ]; then
+    if [ -f "$WAYBAR_THEMES_DIR/$LAYOUT_STYLE.css" ]; then
+        TARGET_LAYOUT="$LAYOUT_STYLE.css"
+        echo "📐 Layout forced to: $LAYOUT_STYLE"
+    else
+        echo "⚠️  Warning: Layout '$LAYOUT_STYLE' not found in $WAYBAR_THEMES_DIR"
+        echo "   Falling back to default logic."
+    fi
+fi
+
+# Case B: No layout specified (or found above), check for auto-match (e.g. 'nord.css')
+if [ -z "$TARGET_LAYOUT" ]; then
+    if [ -f "$WAYBAR_THEMES_DIR/$COLOR_THEME.css" ]; then
+        TARGET_LAYOUT="$COLOR_THEME.css"
+        echo "📐 Auto-matched layout: $COLOR_THEME"
+    fi
+fi
+
+# Case C: Fallback Logic
+# Checks for 'default.css', then 'blocky.css'. 
+if [ -z "$TARGET_LAYOUT" ]; then
+    if [ -f "$WAYBAR_THEMES_DIR/block.css" ]; then
+        TARGET_LAYOUT="block.css"
+    elif [ -f "$WAYBAR_THEMES_DIR/islands.css" ]; then
+         TARGET_LAYOUT="islands.css"
+    else
+        echo "❌ Critical: No default layout found (checked default.css and blocky.css)!"
+        exit 1
+    fi
+    echo "📐 Using fallback layout: $TARGET_LAYOUT"
+fi
+
+# Link the file
+ln -sf "$WAYBAR_THEMES_DIR/$TARGET_LAYOUT" "$WAYBAR_CONFIG"
+
+# ---------------------------------------------------------
+# 4. EXPORT WALLPAPER DIRECTORY
+# ---------------------------------------------------------
+# Matches ~/Pictures/Wallpapers/<theme-name>
+WALL_DIR="$HOME/Pictures/Wallpapers/$COLOR_THEME"
+
+# [NEW] Create directory if it doesn't exist
+if [ ! -d "$WALL_DIR" ]; then
+    echo "📂 Directory missing. Creating: $WALL_DIR"
+    mkdir -p "$WALL_DIR"
+fi
+
+# We save this variable to a file that other scripts can read
+echo "WALLPAPER_DIR=\"$WALL_DIR\"" > "$CACHE_DIR/wallpaper_env.sh"
+
+echo "📂 Wallpaper dir set to: $WALL_DIR"
+
+# ---------------------------------------------------------
+# 5. RELOAD APPS
+# ---------------------------------------------------------
+pkill waybar && waybar & disown
+killall dunst
+# hyprctl reload 
+
+echo "✅ Done."

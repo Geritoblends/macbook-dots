@@ -1,20 +1,29 @@
 #!/bin/bash
 
-# Directory containing wallpapers
-WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Gruvbox"
+# 1. Set a default (fallback)
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers/Catppuccin-Mocha"
+
+# 2. SMART IMPORT: Check if Pywal has a theme directory set
+# This overwrites WALLPAPER_DIR with the one from the 'theme' script
+if [ -f "$HOME/.cache/wal/wallpaper_env.sh" ]; then
+    source "$HOME/.cache/wal/wallpaper_env.sh"
+fi
+
+# Configs
 HYPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 while true; do
+    # ----------------------------------------------------------------------
+    # Check if directory exists before trying to list it
+    # ----------------------------------------------------------------------
+    if [ ! -d "$WALLPAPER_DIR" ]; then
+        notify-send "Error" "Wallpaper folder not found:\n$WALLPAPER_DIR"
+        exit 1
+    fi
+
     # List files in the wallpaper directory and send them to Fuzzel
-    # ----------------------------------------------------------------------
-    # Fuzzel equivalent:
-    # - --dmenu: Puts Fuzzel in selection mode.
-    # - --prompt="": Removes the prompt text.
-    # - Fuzzel does not support -W (width) or -H (height) in pixels. 
-    #   You can use '-l' for lines (height) and rely on the config for width.
-    # ----------------------------------------------------------------------
-    SELECTED=$(ls "$WALLPAPER_DIR"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | xargs -n 1 basename | fuzzel --dmenu --prompt="" )
+    SELECTED=$(ls "$WALLPAPER_DIR"/*.{png,jpg,jpeg,gif,webp} 2>/dev/null | xargs -n 1 basename | fuzzel --dmenu --prompt="🖼️  Wallpapers: " -l 15)
 
     if [ -n "$SELECTED" ]; then
         # Full path to the selected wallpaper
@@ -23,14 +32,15 @@ while true; do
         # 1. Update swww (live wallpaper)
         swww img "$WALLPAPER_PATH" --transition-step 110 --transition-type center --transition-fps 30
         
-        # 2. Update hyprpaper config (for persistence)
+        # 2. Update hyprpaper config
+        # Note: I added quotes around the variable in sed for safety
         sed -i "s|^preload = .*|preload = $WALLPAPER_PATH|" "$HYPAPER_CONFIG"
         sed -i "s|^wallpaper = .*|wallpaper = ,$WALLPAPER_PATH|" "$HYPAPER_CONFIG"
         
-        # 3. Update hyprlock config (lock screen wallpaper)
-        # Assuming you use a variable definition like '$wallpaper = /path/to/img.jpg' in your hyprlock.conf
+        # 3. Update hyprlock config
         sed -i "s|^\$wallpaper = .*|\$wallpaper = $WALLPAPER_PATH|" "$HYPRLOCK_CONFIG"
 
+        notify-send "Wallpaper Set" "$SELECTED"
         break
         
     else

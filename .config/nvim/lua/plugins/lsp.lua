@@ -16,6 +16,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts, { desc = "Show References" })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts, { desc = "LSP Code Action" })
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts, { desc = "LSP Rename" })
+    vim.keymap.set("n", "<C-y>", vim.diagnostic.open_float, opts, { desc = "Show diagnostic error messages" })
     vim.keymap.set("n", "<leader>f", function()
         vim.lsp.buf.format { async = true }
     end, opts, { desc = "LSP Format Buffer" })

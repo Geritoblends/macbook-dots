@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 1. Find where Pywal hides its themes
+# (This usually outputs /usr/lib/python3.x/site-packages/pywal/colorschemes)
+INTERNAL_THEMES_DIR=$(python3 -c "import pywal; print(pywal.__path__[0] + '/colorschemes')")
+USER_THEMES_DIR="$HOME/.config/wal/colorschemes"
+
+if [ ! -d "$INTERNAL_THEMES_DIR" ]; then
+    echo "❌ Could not find Pywal themes. Is pywal installed?"
+    exit 1
+fi
+
+# 2. Search for JSON files (Dark and Light folders)
+# We look in both ./dark/ and ./light/ subfolders
+SELECTED_PATH=$(find "$INTERNAL_THEMES_DIR" -name "*.json" | sed "s|$INTERNAL_THEMES_DIR/||" | fuzzel --dmenu --prompt="🦄 Built-in Themes: " -l 20)
+
+if [ -z "$SELECTED_PATH" ]; then
+    exit 0
+fi
+
+# 3. Extract the name (e.g., "dark/mocha.json" -> "mocha")
+THEME_NAME=$(basename "$SELECTED_PATH" .json)
+SOURCE_FILE="$INTERNAL_THEMES_DIR/$SELECTED_PATH"
+DEST_FILE="$USER_THEMES_DIR/$THEME_NAME.json"
+
+# 4. Copy it to your config folder so our 'theme' script can use it
+cp "$SOURCE_FILE" "$DEST_FILE"
+
+echo "📦 Installed $THEME_NAME to your config."
+
+# 5. Apply it immediately
+theme "$THEME_NAME"

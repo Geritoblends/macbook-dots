@@ -1,20 +1,22 @@
+@import url("/home/gero/.cache/wal/colors-wlogout.css");
+
 * {
     font-family: "JetBrains Mono NF";
-	background-image: none;
-	box-shadow: none;
-    color: #ebdbb2;
+    background-image: none;
+    box-shadow: none;
+    color: @foreground;  /* Changed from #ebdbb2 */
     font-weight: bolder;
     font-size: 24px;
 }
 
 window {
-	background-color: alpha(#0a0a0a, 0.8);
+    background-color: alpha(@background, 0.8); /* Changed from #0a0a0a */
 }
 
 button {
-	text-decoration-color: transparent;
+    text-decoration-color: transparent;
     text-shadow: none;
-    color: #f9e2af;
+    color: @accent; /* Changed from #f9e2af */
     border: none;
     background-image: none;
     background-size: 1%;

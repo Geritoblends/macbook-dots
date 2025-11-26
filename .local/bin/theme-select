@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Paths
+SCHEME_DIR="$HOME/.config/wal/colorschemes"
+LAYOUT_DIR="$HOME/.config/waybar/themes"
+
+# 1. Select Color Scheme
+# We list files, strip extension, and pipe to fuzzel
+COLORSCHEME=$(ls "$SCHEME_DIR" | sed 's/.json//' | fuzzel --dmenu --prompt="🎨 Theme: " -l 10)
+
+# If user cancelled (pressed Escape), exit
+if [ -z "$COLORSCHEME" ]; then
+    exit 0
+fi
+
+# 2. Select Layout
+# We list css files, exclude 'style.css', strip extension
+LAYOUT=$(ls "$LAYOUT_DIR" | grep ".css" | grep -v "style.css" | sed 's/.css//' | fuzzel --dmenu --prompt="📐 Layout: " -l 5)
+
+# If user cancelled layout selection, just apply color with default/auto layout
+if [ -z "$LAYOUT" ]; then
+    theme "$COLORSCHEME"
+else
+    theme "$COLORSCHEME" "$LAYOUT"
+fi

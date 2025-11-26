@@ -14,12 +14,19 @@ return {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {
+                -- Existing filetypes:
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
-                sh = {}, -- No formatter configured for shell scripts here
+                sh = {},
                 rust = { "rustfmt" },
+
+                -- ADDITIONS FOR HTML, CSS, TSX, and JSX:
+                html = { "prettier" }, -- For HTML files
+                css = { "prettier" },  -- For CSS files
+                -- TSX is typically covered by 'typescriptreact' (already present)
+                -- JSX is typically covered by 'javascriptreact' (already present)
             },
             format_on_save = function(bufnr)
                 if vim.bo[bufnr].filetype == "sh" then

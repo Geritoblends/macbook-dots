@@ -1,11 +1,15 @@
 #!/bin/bash
 
 if [ "$#" -eq 0 ]; then
-    echo "Usage: mfetch \"Song Title - Artist Name\" ..."
+    echo "Usage: mfetch \"Song Title - Artist Name [- Album Name]\" ..."
     exit 1
 fi
 
 music_dir="$HOME/Music"
+
+if ! command -v mpc &> /dev/null; then
+    echo "⚠️ Warning: 'mpc' command not found. Skipping playlist update." >&2
+fi
 
 for query in "$@"; do
     filename="${query}.mp3"
@@ -21,14 +25,44 @@ for query in "$@"; do
         --audio-format mp3 \
         --output "${music_dir}/${filename}" \
         --no-playlist
-
-    # Extract title and artist from the input
+    
+    # --- Parsing Logic (Same) ---
     title=$(echo "$query" | cut -d '-' -f1 | xargs)
-    artist=$(echo "$query" | cut -d '-' -f2- | xargs)
+    rest=$(echo "$query" | cut -d '-' -f2- | xargs)
 
-    # Set ID3 tags
-    eyeD3 --title="$title" --artist="$artist" "${music_dir}/${filename}" > /dev/null
+    if [[ "$rest" == *"-"* ]]; then
+        artist=$(echo "$rest" | cut -d '-' -f1 | xargs)
+        album=$(echo "$rest" | cut -d '-' -f2- | xargs)
+    else
+        artist="$rest"
+        album=""
+    fi
+
+    # --- Tagging Logic (Same) ---
+    
+    echo "   🏷️ Tagging: Title: $title | Artist: $artist | Album: ${album:-N/A}"
+    
+    tag_options=(--title="$title" --artist="$artist")
+    if [ -n "$album" ]; then
+        tag_options+=(--album="$album")
+    fi
+    eyeD3 "${tag_options[@]}" "${music_dir}/${filename}" > /dev/null
+
+    # --- NEW: Non-Destructive MPD Playlist Logic ---
+    if [ -n "$album" ] && command -v mpc &> /dev/null; then
+        # 1. Update MPD database to recognize the new file
+        mpc update --wait 
+        
+        # We need the relative path MPD uses
+        relative_path="${filename}" 
+
+        # 2. Add the file directly to the SAVED playlist.
+        # This command creates the playlist if it doesn't exist AND
+        # adds the file to it without touching the current playback queue.
+        mpc addplaylist "$album" "$relative_path"
+        
+        echo "   🎶 Playlist: Added '${title}' to MPD playlist: '${album}' without disrupting playback."
+    fi
 
     notify-send "✅ Download complete" "'${filename}' saved to Music and tagged."
 done
-

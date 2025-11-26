@@ -30,4 +30,4 @@ require("lazy").setup({
 -- Load all keymaps and terminal setup *after* plugins
 require("config.keymaps")
 require("config.terminal")
-require("colors.gruvbox").setup() -- Keep colorscheme at the very end
+require("colors.wal").setup()

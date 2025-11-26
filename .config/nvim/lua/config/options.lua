@@ -10,8 +10,8 @@ vim.opt.cursorline = true
 vim.opt.mouse = 'a'
 
 -- Tabs and Indentation
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -25,6 +25,3 @@ vim.opt.signcolumn = 'yes'
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
-
-

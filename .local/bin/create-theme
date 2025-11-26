@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Usage: create-theme-ai "Cyberpunk 2077"
+THEME_QUERY="$1"
+SCHEME_DIR="$HOME/.config/wal/colorschemes"
+mkdir -p "$SCHEME_DIR"
+
+if [ -z "$THEME_QUERY" ]; then
+    echo "Usage: create-theme-ai <description>"
+    exit 1
+fi
+
+echo "🧠 Asking AI to generate: '$THEME_QUERY'..."
+
+# 1. THE PROMPT
+PROMPT="Act as a configuration generator. I need a JSON color scheme for a theme described as: '$THEME_QUERY'. 
+Strictly follow this pywal format. Output ONLY raw JSON. No markdown backticks.
+
+Structure:
+{
+  \"special\": {
+    \"background\": \"#HEX\",
+    \"foreground\": \"#HEX\",
+    \"cursor\": \"#HEX\"
+  },
+  \"colors\": {
+    \"color0\": \"#HEX\",
+    \"color1\": \"#HEX\",
+    \"color2\": \"#HEX\",
+    \"color3\": \"#HEX\",
+    \"color4\": \"#HEX\",
+    \"color5\": \"#HEX\",
+    \"color6\": \"#HEX\",
+    \"color7\": \"#HEX\",
+    \"color8\": \"#HEX\",
+    \"color9\": \"#HEX\",
+    \"color10\": \"#HEX\",
+    \"color11\": \"#HEX\",
+    \"color12\": \"#HEX\",
+    \"color13\": \"#HEX\",
+    \"color14\": \"#HEX\",
+    \"color15\": \"#HEX\"
+  }
+}
+"
+
+# 2. RUN TGPT
+RAW_OUTPUT=$(tgpt "$PROMPT")
+
+# 3. CLEAN OUTPUT (THE FIX)
+# We use Python to slice the string from the first '{' to the last '}'.
+# This ignores 'Y4:0', 'Loading...', or markdown blocks.
+CLEAN_JSON=$(echo "$RAW_OUTPUT" | python3 -c "import sys; raw=sys.stdin.read(); start=raw.find('{'); end=raw.rfind('}')+1; print(raw[start:end] if start!=-1 and end!=0 else '')")
+
+# 4. VALIDATE & SAVE
+if [ -n "$CLEAN_JSON" ] && echo "$CLEAN_JSON" | python3 -m json.tool > /dev/null 2>&1; then
+    FILENAME=$(echo "$THEME_QUERY" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+    FILE_PATH="$SCHEME_DIR/$FILENAME.json"
+
+    echo "$CLEAN_JSON" > "$FILE_PATH"
+    
+    echo "✅ Success! Saved to $FILE_PATH"
+    echo "👉 Run: theme $FILENAME [layout]"
+else
+    echo "❌ AI Failed to output valid JSON. Here is the raw output:"
+    echo "$RAW_OUTPUT"
+fi
